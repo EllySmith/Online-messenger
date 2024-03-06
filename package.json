@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/EllySmith/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.0"
+    "@hexlet/chat-server": "^2.0.0",
+    "formik": "^2.4.5",
+    "react-router-dom": "^6.22.2"
   }
 }
