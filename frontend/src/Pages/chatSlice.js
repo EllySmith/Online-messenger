@@ -1,34 +1,52 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Замените `apiRoutes` на ваш реальный импорт путей к API
 import apiRoutes from '../routes';
 
-// Создайте асинхронный thunk для получения данных о каналах и сообщениях
-export const fetchChatData = createAsyncThunk(
-  'chat/fetchData',
+export const fetchChannels = createAsyncThunk(
+  'chat/fetchChannels',
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token'); // Получаем токен из localStorage
+      const token = localStorage.getItem('token'); 
+      console.log(token);
       if (!token) {
         throw new Error('Токен не найден');
       }
 
-      // Запрос к серверу для получения данных о каналах и сообщениях
-      const response = await axios.get(apiRoutes.chatData(), {
+      const response = await axios.get(apiRoutes.channelsPath(), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      return response.data; // Возвращаем данные, полученные с сервера
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// Создаем начальное состояние для чата
+export const fetchMessages = createAsyncThunk(
+  'chat/fetchMessages',
+  async (_, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token'); 
+      if (!token) {
+        throw new Error('Токен не найден');
+      }
+
+      const response = await axios.get(apiRoutes.messagesPath(), {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log('Messages:', response);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
   channels: [],
   messages: [],
@@ -36,12 +54,10 @@ const initialState = {
   error: null,
 };
 
-// Создаем slice для управления состоянием чата
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    // Добавляем reducers для обновления состояния приложения при получении данных
     resetChatState: (state) => {
       state.channels = [];
       state.messages = [];
@@ -49,25 +65,34 @@ const chatSlice = createSlice({
       state.error = null;
     },
   },
-  extraReducers: {
-    // Обработка успешного завершения асинхронного thunk
-    [fetchChatData.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [fetchChatData.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.channels = action.payload.channels;
-      state.messages = action.payload.messages;
-    },
-    // Обработка ошибки при выполнении асинхронного thunk
-    [fetchChatData.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchChannels.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchChannels.fulfilled, (state, action) => {
+        state.loading = false;
+        state.channels = action.payload;
+      })
+      .addCase(fetchChannels.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchMessages.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchMessages.fulfilled, (state, action) => {
+        state.loading = false;
+        state.messages = action.payload;
+      })
+      .addCase(fetchMessages.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
-// Экспортируем actions и reducers
 export const { resetChatState } = chatSlice.actions;
-export default chatSlice.reducer;
+export const chatReducer = chatSlice.reducer;

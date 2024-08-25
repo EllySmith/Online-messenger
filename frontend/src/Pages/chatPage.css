@@ -1,0 +1,59 @@
+/* ChatPage.css */
+
+.chat-container {
+     display: flex;
+     flex-direction: row;
+     height: 100vh; /* Full height of the viewport */
+   }
+   
+   .channel-list {
+     width: 250px; /* Adjust as needed */
+     background-color: #f0f0f0; /* Light background color for channels */
+     padding: 10px;
+     border-right: 1px solid #ccc; /* Border between channels and messages */
+     box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional shadow for channels box */
+     overflow-y: auto; /* Scroll if content overflows */
+   }
+   
+   .message-container {
+     flex: 1; /* Takes remaining space */
+     display: flex;
+     flex-direction: column;
+     padding: 10px;
+     background-color: #ffffff; /* White background for messages */
+   }
+   
+   .message-list {
+     flex: 1; /* Takes all available space except for the input */
+     overflow-y: auto; /* Scroll if content overflows */
+     margin-bottom: 10px; /* Space between messages and input */
+   }
+   
+   .message-input {
+     display: flex;
+     align-items: center;
+   }
+   
+   .message-input textarea {
+     width: 100%;
+     height: 50px; /* Adjust height as needed */
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     box-sizing: border-box; /* Ensures padding is included in width */
+   }
+   
+   .message-input button {
+     margin-left: 10px;
+     padding: 10px 20px;
+     border: none;
+     background-color: #007bff;
+     color: white;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+   
+   .message-input button:hover {
+     background-color: #0056b3;
+   }
+   
