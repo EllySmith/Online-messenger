@@ -1,4 +1,4 @@
-import './LoginPage.css';
+import '../App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
@@ -16,6 +16,7 @@ const LoginPage = (index) => {
           const { data } = await axios.post(apiRoutes.login(), values);
           const token = data.token;
           localStorage.setItem('token', token)
+          localStorage.setItem('username', values.username);
           navigate('/success');
           } catch (error) {
             setError('Неверное имя пользователя или пароль');

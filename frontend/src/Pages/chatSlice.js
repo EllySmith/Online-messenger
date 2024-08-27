@@ -1,7 +1,42 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import io from 'socket.io-client';
 import apiRoutes from '../routes';
+
+let socket;
+
+export const initializeSocket = createAsyncThunk(
+  'chat/initializeSocket',
+  async (_, thunkAPI) => {
+    if (!socket) { 
+      socket = io('http://localhost:3000'); 
+
+      socket.on('newMessage', (message) => {
+        thunkAPI.dispatch(addMessage(message));
+      });
+    }
+
+    return true;
+  }
+);
+
+export const sendMessage = createAsyncThunk(
+  'chat/sendMessage',
+  async (messageData, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log(`Message data: ${messageData}`)
+      const response = await axios.post(apiRoutes.messagesPath(), messageData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const fetchChannels = createAsyncThunk(
   'chat/fetchChannels',
@@ -52,6 +87,7 @@ const initialState = {
   messages: [],
   loading: false,
   error: null,
+  socketConnected: false,
 };
 
 const chatSlice = createSlice({
@@ -63,6 +99,10 @@ const chatSlice = createSlice({
       state.messages = [];
       state.loading = false;
       state.error = null;
+      state.socketConnected = false;
+    },
+    addMessage: (state, action) => {
+      state.messages.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -91,8 +131,15 @@ const chatSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
+      builder
+      .addCase(initializeSocket.fulfilled, (state) => {
+        state.socketConnected = true;
+      })
+      .addCase(sendMessage.fulfilled, (state, action) => {
+        state.loading = false;
+      });
   },
 });
 
-export const { resetChatState } = chatSlice.actions;
+export const { resetChatState, addMessage } = chatSlice.actions;
 export const chatReducer = chatSlice.reducer;

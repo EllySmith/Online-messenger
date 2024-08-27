@@ -5,6 +5,7 @@ const apiRoutes = {
   signupPath: () => [SERVER_PATH, 'signup'].join('/'),
   channelsPath: () => [SERVER_PATH, 'channels'].join('/'),
   messagesPath: () => [SERVER_PATH, 'messages'].join('/'),
+  usersPath: () => [SERVER_PATH, 'users'].join('/'),
   anyPage: () => '*',
   rootPage: () => '/',
   loginPage: () => '/login',
