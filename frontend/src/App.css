@@ -11,14 +11,23 @@
    
    .header {
      grid-area: header;
-     background-color: #007bff;
-     color: white;
-     padding: 10px;
+     justify-content: space-between;
      display: flex;
-     align-items: center;
-     justify-content: center;
-     font-size: 1.5em;
+     padding: 10px 20px;
+     background-color: #b0cff0;
+     border-bottom: black solid;
+   }
+   
+   .title {
      font-weight: bold;
+     font-size: x-large;
+   }
+   
+   .logout-button {
+     background-color: rgb(72, 99, 157);
+     border-radius: 5px;
+     color: white;
+     width: 10%;
    }
    
    .channel-list {
@@ -29,21 +38,30 @@
      overflow-y: auto;
    }
    
-   .message-container {
-     grid-area: message-container;
-     background-color: #ffffff;
-     display: flex;
-     flex-direction: column;
-     overflow-y: auto; 
-     justify-content: flex-start;
-     padding: 10px;
-   }
-   
-   .message-container ul {
-     margin: 0;
-     padding: 0;
-     list-style-type: none;
-   }
+   .messages-container {
+    position: relative;
+    background-color: #ffffff;
+    padding: 0;
+    border: 1px solid #ddd;
+    height: 100%; 
+    overflow: hidden; 
+    flex-direction: column-reverse;
+    overflow-y: auto;
+  }
+  
+  .messages-container h2 {
+    padding: 10px;
+    position: sticky; 
+    top: 0; 
+    z-index: 1; 
+    background-color: #ffffff;
+  }
+  
+  .messages-container ul {
+    margin: 5px; 
+    height: calc(100% - 50px);
+  }
+  
    
    .message-list {
      flex: 1; 
@@ -88,6 +106,50 @@
      font-weight: 600;
    }
       
+.channel-list {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto; 
+  height: 100%; 
+}
+
+.channel-list h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.channel-list ul {
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.channel-title {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.channel-button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  width: 100%;
+  text-align: left; 
+  font-size: 1em;
+  color: #007bff; 
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.channel-button:hover {
+  background-color: #007bff;
+  color: white;
+}
 
    .container {
      display: flex;

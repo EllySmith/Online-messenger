@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchChannels, fetchMessages, resetChatState, initializeSocket, sendMessage } from './chatSlice';
-import { ChannelButton, Message, Header } from './ChatElements';
+import { ChannelButton, Message, Header, Input } from './ChatElements';
 import '../App.css';
 
 function ChatPage() {
@@ -37,8 +37,9 @@ function ChatPage() {
   useEffect(() => {
     if (messageListRef.current) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+      console.log('scroll');
     }
-  }, [messages]);
+  }, [messages, channelId]);
 
   const handleChannelClick = (channelId) => {
     setChannelId(channelId);
@@ -71,10 +72,12 @@ function ChatPage() {
   };
 
   const filteredMessages = messages.filter(message => message.channelId === channelId);
+  const channelName = channels.find(channel => channel.id === channelId)?.name || 'Unknown Channel';
+
 
   return (
     <div className='main-layout'>
-      <Header />
+      <Header username={username} />
       <div className="channel-list">
         <h2>Channels List</h2>
         <ul>
@@ -83,27 +86,22 @@ function ChatPage() {
               )}
         </ul>
       </div>
-      <div className="message-container" ref={messageListRef}>
-        <h2>Messages</h2>
-        <ul>
+      <div className="messages-container" ref={messageListRef}>
+      <h2>#{channelName}</h2>
+      <ul>
           {filteredMessages.map(message => (
             <Message key={message.messageId} {...message} />
           ))}
         </ul>
       </div>
-      <div className="message-input">
-        <textarea 
-          placeholder="Type your message..." 
+        <Input 
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           onKeyDown={handleKeyDown}
           disabled={sendingMessage}
           ref={messageInputRef}
-        />
-        <button onClick={handleSendMessage} disabled={sendingMessage}>
-          {sendingMessage ? 'Sending...' : 'Send'}
-        </button>
-      </div>
+          onClick={handleSendMessage}   
+      />
     </div>
   );
 }

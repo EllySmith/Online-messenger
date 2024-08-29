@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import '../App.css'
 
 function Registration() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(apiRoutes.signupPath(), { username, password });
       console.log('User registered:', response.data);
+      const token = response.data.token;
+      localStorage.setItem('token', token)
+      localStorage.setItem('username', username);
       setError('');
+      navigate('/success');
     } catch (err) {
       if (err.response && err.response.status === 409) {
         setError('Username already exists');
