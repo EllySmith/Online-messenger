@@ -9,7 +9,7 @@ export const initializeSocket = createAsyncThunk(
   'chat/initializeSocket',
   async (_, thunkAPI) => {
     if (!socket) { 
-      socket = io('http://localhost:3003'); 
+      socket = io('http://localhost:3000'); 
 
       socket.on('newMessage', (message) => {
         thunkAPI.dispatch(addMessage(message));

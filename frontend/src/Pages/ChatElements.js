@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useDispatch } from 'react-redux';
+import { deleteChannel, changeChannelName, fetchChannels } from './chatSlice';
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -10,15 +12,60 @@ const Message = ({messageId, username, body}) => {
   )
 }
 
-function ChannelButton({ id, name, onClick }) {
+const ChannelButton = ({ id, name, onClick }) => {
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [newName, setNewName] = useState('');
+
+
+  const handleButtonClick = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      console.log('Delete channel:', id);
+      dispatch(deleteChannel(id));
+      dispatch(fetchChannels());
+      console.log('Channel list updated after deletion');
+    } catch (error) {
+      console.error('Failed to update channels after deletion:', error);
+    } finally {
+      setShowModal(false);
+    }
+  };
+
+  const handleNameChange = async (id, newName) => {
+    try {
+      console.log('changed chanel', id);
+      dispatch(changeChannelName(id));
+      dispatch(fetchChannels());
+      console.log('Channel list updated after deletion');
+    } catch (error) {
+      console.error('Failed to update channels after deletion:', error);
+    } finally {
+      setShowModal(false);
+    }
+  }
+
+
+
   return (
-    <li key={id} className='channel-title'>
-      <button onClick={() => onClick(id)} className='channel-button'>
-        #{name}
+    <div className="channel-button-container">
+      <button className="channel-button" onClick={() => onClick(id)}>
+        {name}
       </button>
-    </li>
+      <div className={`channel-modal ${showModal ? 'show' : ''}`}>
+        <button onClick={() => setNewName('hello')}> Set name</button>
+        <button onClick={() => handleDelete(id)}>Delete</button>
+         <button onClick={() => handleNameChange(id, newName)}>Change Name</button>
+      </div>
+      <button className="channel-options-button" onClick={handleButtonClick}>
+        &#8226;&#8226;&#8226;
+      </button>
+    </div>
   );
-}
+};
 
 
 
