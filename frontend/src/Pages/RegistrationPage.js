@@ -37,6 +37,7 @@ function Registration() {
       {({ errors, touched, isSubmitting }) => (
         <Form className="container align-items-center justify-content-center">
           <div className="card">
+          <a class="h3 text-center" href="/">Регистрация</a>
             <div className="form-group">
               <label htmlFor="username">Имя:</label>
               <Field
