@@ -16,7 +16,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!socket) {
-      socket = io('http://localhost:3001');
+      socket = io('http://localhost:3000');
     }
 
     const setupSocketListeners = () => {

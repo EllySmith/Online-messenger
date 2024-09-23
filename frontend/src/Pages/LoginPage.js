@@ -5,6 +5,8 @@ import { Formik, Form, Field } from 'formik';
 import apiRoutes from '../routes.js'
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.js';
+import LoginImage from '../images/LoginPage.jpg'
+import { auto } from 'async';
 
 
 const LoginPage = (index) => {
@@ -34,14 +36,14 @@ return (
             <div className="card shadow-sm">
               <div className="card-body row p-4">
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                  <img src="../1.jpg" alt="Hexlet Chat" />
+                  <img src={LoginImage} alt="Hexlet Chat" style={{ width: '300px', height: auto }}/>
                 </div>
      <Formik
     initialValues={{ username: "", password: "" }}
     onSubmit={handleSubmit}
   >
     {() => (
-      <Form className="col-12 col-md-6 mt-3 mt-md-0 ">
+      <Form className="col-12 col-md-6 mt-3 mt-md-0">
 
         <h1 className="text-center mb-4 p-0 me-5">Войти</h1>
         <div className="form-floating mb-3 me-3">

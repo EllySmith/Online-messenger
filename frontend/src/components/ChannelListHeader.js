@@ -1,15 +1,18 @@
 import React from 'react'
 import { useState } from 'react';
-import { addChannel, fetchChannels } from '../store/channelsSlice';
+import { addChannel } from '../store/channelsSlice';
 import { randomKey } from '../utils/different';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
+import { changeCurrentChannel } from '../store/channelsSlice';
 
 
 function ChannelListHeader() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [newName, setNewName] = useState('');
+  const current = useSelector(state => state.channels.currentChannelId);
+
 
 
   const handleShowModal = () => setShowModal(true);
@@ -26,13 +29,16 @@ function ChannelListHeader() {
 
     try {
       const newId = randomKey(); 
-      await dispatch(addChannel({ id: newId, name: newName, removable: true })).unwrap();
+      const newChannel = { id: newId, name: newName, removable: true };
+      console.log(newChannel);
+      await dispatch(addChannel(newChannel)).unwrap();
+      await dispatch(changeCurrentChannel(newId));
+      console.log(current);
       handleCloseModal();
+     
     } catch (error) {
       console.error('Failed to add channel:', error); 
-    } finally {
-      dispatch(fetchChannels());
-    }
+    } 
   };
 
   return (
@@ -43,12 +49,12 @@ function ChannelListHeader() {
         className="p-0 text-primary btn btn-group-vertical"
         onClick={handleShowModal}
       >
-        <p>Add</p>
+        <p><b>+</b></p>
       </button>
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Channel</Modal.Title>
+          <Modal.Title>Введите название:</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
@@ -61,10 +67,10 @@ function ChannelListHeader() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
-            Close
+            Закрыть
           </Button>
           <Button variant="primary" onClick={handleAddChannel}>
-            Add
+            Добавить
           </Button>
         </Modal.Footer>
       </Modal>

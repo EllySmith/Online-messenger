@@ -3,7 +3,7 @@ import React from "react";
 const Input = React.forwardRef(({ value, onChange, onKeyDown, disabled, onClick }, ref) => {
 
      return (
-     <form novalidate="" class="py-1 border rounded-2 w-100" onSubmit={onClick}>
+     <form noValidate="" className="py-1 border rounded-2 w-100" onSubmit={onClick}>
      <div className="input-group has-validation">
  
        <input 

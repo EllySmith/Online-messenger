@@ -2,20 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import apiRoutes from '../routes';
 
-
 export const fetchChannels = createAsyncThunk(
   'chat/fetchChannels',
   async (_, thunkAPI) => {
     try {
       const token = localStorage.getItem('token'); 
-      if (!token) {
-        throw new Error('Токен не найден');
-      }
+      if (!token) throw new Error('Токен не найден');
 
       const response = await axios.get(apiRoutes.channelsPath(), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
     } catch (error) {
@@ -24,16 +19,13 @@ export const fetchChannels = createAsyncThunk(
   }
 );
 
-
 export const deleteChannel = createAsyncThunk(
   'chat/deleteChannel',
   async (channelId, thunkAPI) => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(apiRoutes.channelPath(channelId), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       return channelId;
     } catch (error) {
@@ -48,9 +40,7 @@ export const changeChannelName = createAsyncThunk(
     try {
       const token = localStorage.getItem('token');
       const response = await axios.patch(apiRoutes.channelPath(channelId), { name: newName }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
     } catch (error) {
@@ -65,9 +55,7 @@ export const addChannel = createAsyncThunk(
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(apiRoutes.channelsPath(), channelData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
     } catch (error) {
@@ -78,6 +66,7 @@ export const addChannel = createAsyncThunk(
 
 const initialState = {
   channels: [],
+  currentChannelId: 1,
   loading: false,
   error: null,
   isLoggedIn: false,
@@ -90,22 +79,27 @@ const channelsSlice = createSlice({
   reducers: {
     resetChatState: (state) => {
       state.channels = [
-          { id: 1, name: 'general', removable: false },
-          { id: 2, name: 'random', removable: false },
-        ];
+        { id: 1, name: 'general', removable: false },
+        { id: 2, name: 'random', removable: false },
+      ];
+      state.currentChannelId = 1;
       state.messages = [];
       state.loading = false;
       state.error = null;
       state.socketConnected = false;
     },
+    changeCurrentChannel: (state, action) => {
+      state.currentChannelId = action.payload; 
+    },
+    addChannelAction: (state, action) => {
+      state.channels.push(action.payload);
+      state.currentChannelId = action.payload.id;
+    },
+    deleteChannelAction: (state, action) => {
+      state.channels = state.channels.filter(channel => channel.id !== action.payload);
+    },
   },
-    addChanel: (state, action) => {
-    state.channels.push(action.payload);
-  },
-    deleteChannel: (state, action) => {
-
-    }, 
-    extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchChannels.pending, (state) => {
         state.loading = true;
@@ -150,5 +144,5 @@ const channelsSlice = createSlice({
   },
 });
 
-export const { resetChatState, addChanel } = channelsSlice.actions;
+export const { resetChatState, addChannelAction, deleteChannelAction, changeCurrentChannel } = channelsSlice.actions;
 export const channelsReducer = channelsSlice.reducer;
