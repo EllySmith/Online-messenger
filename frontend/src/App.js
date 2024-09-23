@@ -5,10 +5,10 @@ import { useDispatch} from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {deleteChannel, changeChannelName } from './store/channelsSlice';
 import { addMessage,  } from './store/messagesSlice';
-import ErrorPage from './pages/ErrorPage'
-import LoginPage from './pages/LoginPage'
-import ChatPage from './pages/ChatPage';
-import RegistrationPage from './pages/RegistrationPage';
+import ErrorPage from './pages/ErrorPage.js'
+import LoginPage from './pages/LoginPage.js'
+import ChatPage from './pages/ChatPage.js';
+import RegistrationPage from './pages/RegistrationPage.js';
 
 let socket;
   
