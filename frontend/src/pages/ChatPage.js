@@ -11,6 +11,8 @@ import { fetchMessages } from '../store/messagesSlice';
 import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.minimal.css";
 
 
 function ChatPage() {
@@ -23,13 +25,12 @@ function ChatPage() {
   const [username, setUsername] = useState(localStorage.getItem('username'));
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
-  const current = useSelector(state => state.channels.currentChannelId);
+  const notify = () => toast(`${t('notify.noconnection')}`);
   
   useEffect(() => {
     dispatch(fetchChannels());
     dispatch(fetchMessages());
-    console.log(current);
-  }, [dispatch, current]);
+  }, [dispatch, messages]);
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -54,6 +55,7 @@ function ChatPage() {
         setMessageInput('');
       } catch (error) {
         console.error('Failed to send message:', error);
+        notify();
       } finally {
         setSendingMessage(false);       
       }
@@ -112,6 +114,7 @@ function ChatPage() {
             <div className="Toastify"></div>
           </div>
         </div>
+        <ToastContainer/>
       </div>
   );
 }

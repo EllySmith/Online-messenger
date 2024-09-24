@@ -5,17 +5,22 @@ import { hideModal } from "../../store/modalSlice";
 import { addChannel } from "../../store/channelsSlice";
 import { randomKey } from "../../utils/different";
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 function AddModal() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const [newName, setNewName] = useState('');
+  const notify = () => toast(`${t('notify.add')}`);
 
   const handleAddChannel = async () => {
     const newId = randomKey();
     const newChannel = { name: newName, id: newId, removable: true };    
     dispatch(addChannel(newChannel));
+    notify();
     dispatch(hideModal());
     setNewName('');
   };
@@ -56,6 +61,7 @@ function AddModal() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer/>
     </div>
   );
 }

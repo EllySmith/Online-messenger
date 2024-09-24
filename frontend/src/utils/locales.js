@@ -43,6 +43,11 @@ export const ru = {
       noPassword: 'Пароль обязателен',
       noMatch:'Пароли не совпадают',
       noSecondPassword: 'Подтверждение пароля обязательно',
+     },
+     notify: {
+      rename: "Имя канала изменено.",
+      add: "Канал добавлен.",
+      delete: "Канал удален."
      }
 
    };
@@ -92,7 +97,13 @@ export const ru = {
       noPassword: "Password is required.",
       noMatch: "Passwords do not match.",
       noSecondPassword: "Password confirmation is required.",
-    }    
+    },
+    notify: {
+      rename: "Name changed.",
+      add: "Channel added.",
+      delete: "Channel removed."
+}
+   
    };
 
    export const it = {
@@ -139,6 +150,11 @@ export const ru = {
       noPassword: "La password è obbligatoria.",
       noMatch: "Le password non corrispondono.",
       noSecondPassword: "La conferma della password è obbligatoria.",
-    }    
+    },
+    notify: {
+      rename: "Nome cambiato.",
+      add: "Canale aggiunto.",
+      delete: "Canale rimosso."
+    }
    };
    

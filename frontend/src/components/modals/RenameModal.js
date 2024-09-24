@@ -4,16 +4,20 @@ import { changeChannelName } from '../../store/channelsSlice';
 import { hideModal } from '../../store/modalSlice';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.minimal.css";
+
 
 function RenameModal({id}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
  const [name, setName] = useState('');
-
+ const notify = () => toast(`${t('notify.rename')}`);
  const handleRename = async () => {
   if (name.trim()) { 
     await dispatch(changeChannelName({ id, name }));
+    notify();
     dispatch(hideModal());
   }
 };
@@ -50,6 +54,7 @@ const handleKeyDown = (e) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer/>
     </div>
   )
 }
