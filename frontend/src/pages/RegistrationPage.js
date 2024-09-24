@@ -4,6 +4,9 @@ import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import * as Yup from 'yup';
+import { validationSchema } from '../utils/validation';
+
 import '../App.css';
 
 function Registration() {
@@ -18,12 +21,12 @@ function Registration() {
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
       setErrors({});
-      navigate('/success');
+      navigate('/success'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
-        setErrors({ general: 'Username already exists' });
+        setErrors({ general: 'Имя пользователя уже существует' });
       } else {
-        setErrors({ general: 'An error occurred during registration' });
+        setErrors({ general: 'Произошла ошибка при регистрации' });
       }
     } finally {
       setSubmitting(false);
@@ -43,8 +46,9 @@ function Registration() {
                 </div>
                 <div className="col-12 col-md-6 mt-3 mt-md-0">
                   <Formik
-                    initialValues={{ username: '', password: '' }}
+                    initialValues={{ username: '', password: '', confirmPassword: '' }}
                     onSubmit={handleSubmit}
+                    validationSchema={validationSchema}
                   >
                     {({ errors, touched, isSubmitting }) => (
                       <Form>
@@ -74,6 +78,19 @@ function Registration() {
                               <div className="invalid-feedback">{errors.password}</div>
                             )}
                           </div>
+                          <div className="form-group">
+                          <div className="form-floating mb-3">
+                            <Field
+                              type="password"
+                              name="confirmPassword"
+                              className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
+                            />
+                            <label htmlFor="confirmPassword">Подтверждение пароля:</label>
+                            {errors.confirmPassword && touched.confirmPassword && (
+                              <div className="invalid-feedback">{errors.confirmPassword}</div>
+                            )}
+                          </div>
+                        </div>
                         </div>
                         <div className="text-center">
                           <button type="submit" className="btn btn-outline-primary" disabled={isSubmitting}>
