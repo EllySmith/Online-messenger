@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "../../store/modalSlice";
 import { addChannel } from "../../store/channelsSlice";
 import { randomKey } from "../../utils/different";
+import { useTranslation } from 'react-i18next';
 
 function AddModal() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const [newName, setNewName] = useState('');
@@ -26,7 +28,7 @@ function AddModal() {
     <div>
       <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>Введите название:</Modal.Title>
+          <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
@@ -39,10 +41,10 @@ function AddModal() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-            Закрыть
+          {t('modals.quit')}
           </Button>
           <Button variant="primary" onClick={handleAddChannel}>
-            Добавить
+          {t('modals.add')}
           </Button>
         </Modal.Footer>
       </Modal>

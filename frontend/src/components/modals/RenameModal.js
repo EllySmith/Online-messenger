@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeChannelName } from '../../store/channelsSlice';
 import { hideModal } from '../../store/modalSlice';
 import { Modal, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function RenameModal({id}) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
  const [name, setName] = useState('');
@@ -23,7 +25,7 @@ const hide = () => {
     <div>
       <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>Введите новое имя:</Modal.Title>
+          <Modal.Title>{t('modals.renameHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <input
@@ -35,9 +37,9 @@ const hide = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-Закрыть          </Button>
+          {t('modals.quit')}          </Button>
           <Button variant="primary" onClick={() => handleRename({id, name})}>
-          Изменить
+          {t('modals.rename')}
           </Button>
         </Modal.Footer>
       </Modal>

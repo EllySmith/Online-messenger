@@ -1,24 +1,39 @@
-import React from "react"
+import React from "react";
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation(); 
+
   const logOut = () => {
     localStorage.token = '';
-    localStorage.username ='';
-    navigate('/')
-  }
+    localStorage.username = '';
+    navigate('/');
+  };
 
-     return (
-       <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-         <div className="container">
-           <a className="navbar-brand" href="/">Hexlet Chat</a>
-           {localStorage.username && <button type="button" className="btn btn-primary" onClick={() => logOut()}>Выйти</button>}
-           </div>
-           </nav>
-     )
-   }
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('i18nextLng', lng); 
+  };
 
-   export default Header
+  return (
+    <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
+      <div className="container">
+        <a className="navbar-brand" href="/">Chat</a>
+        {localStorage.username && (
+          <button type="button" className="btn btn-primary" onClick={logOut}>
+            {t('header.quit')}
+          </button>
+        )}
+        <div>
+          <button onClick={() => changeLanguage('eng')}>English</button>
+          <button onClick={() => changeLanguage('it')}>Italian</button>
+          <button onClick={() => changeLanguage('ru')}>Russian</button>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-   
+export default Header;

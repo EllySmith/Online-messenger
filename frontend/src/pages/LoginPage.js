@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.js';
 import LoginImage from '../images/LoginPage.jpg'
 import { auto } from 'async';
+import { useTranslation } from 'react-i18next';
+
 
 
 const LoginPage = (index) => {
+    const { t } = useTranslation(); 
 
      const [error, setError] = useState('');
 
@@ -45,16 +48,16 @@ return (
     {() => (
       <Form className="col-12 col-md-6 mt-3 mt-md-0">
 
-        <h1 className="text-center mb-4 p-0 me-5">Войти</h1>
+        <h1 className="text-center mb-4 p-0 me-5">{t('form.loginHeader')}</h1>
         <div className="form-floating mb-3 me-3">
         <Field
         type="text"
         name="username"
         className="form-control"
         id="username"
-        placeholder="Имя"
+        placeholder={t('form.name')}
         />
-        <label htmlFor="username">Имя:</label>
+        <label htmlFor="username">{t('form.name')}</label>
         </div>
           <div className="form-floating mb-3 me-3">
             <Field
@@ -62,12 +65,12 @@ return (
               name="password"
               className="form-control"
               id="password"
-              placeholder="Пароль"
+              placeholder={t('form.password')}
             />
-            <label htmlFor="password">Пароль:</label>
+            <label htmlFor="password">{t('form.password')}</label>
           </div>
           <div className="text-center">
-          <button type="submit" className="mb-3 btn btn-outline-primary">Отправить.</button>
+          <button type="submit" className="mb-3 btn btn-outline-primary">{t('form.send')}</button>
           </div>
           
       </Form>
@@ -78,7 +81,7 @@ return (
   <div className="card-footer text-center pt-3">
             <p>
               {error && <div className="error-message">{error}</div>}
-              Нет аккаунта? <a href='/registration'>Регистрация.</a>
+              {t('form.withoutAccount')} <a href='/registration'>{t('form.register')}</a>
             </p>
           </div>
   </div>

@@ -9,6 +9,7 @@ import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import ChatPage from './pages/ChatPage';
 import RegistrationPage from './pages/RegistrationPage';
+import './i18n';
 
 let socket;
   

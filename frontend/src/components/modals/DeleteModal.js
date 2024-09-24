@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hideModal } from '../../store/modalSlice'
 import { deleteChannel } from '../../store/channelsSlice'
 import { Modal, Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 function DeleteModal({id}) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const handleDelete = () => {
@@ -17,14 +19,14 @@ function DeleteModal({id}) {
   return (
         <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>Удалить канал?</Modal.Title>
+          <Modal.Title>{t('modals.deleteHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-            Нет
+          {t('modals.no')}
           </Button>
           <Button variant="primary" onClick={handleDelete}>
-            Да
+          {t('modals.yes')}
           </Button>
         </Modal.Footer>
       </Modal>

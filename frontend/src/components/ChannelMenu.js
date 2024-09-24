@@ -1,6 +1,8 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 function ChannelMenu({handleRenameClick, handleDeleteClick, buttonClass}) {
+  const { t } = useTranslation();
   return (
      (
           <>
@@ -14,12 +16,12 @@ function ChannelMenu({handleRenameClick, handleDeleteClick, buttonClass}) {
             <ul className="dropdown-menu">
               <li>
                 <button className="dropdown-item" onClick={handleRenameClick}>
-                  Переименовать
+                {t('modals.rename')}
                 </button>
               </li>
               <li>
                 <button className="dropdown-item text-danger" onClick={handleDeleteClick}>
-                  Удалить
+                {t('modals.delete')}
                 </button>
               </li>
             </ul>

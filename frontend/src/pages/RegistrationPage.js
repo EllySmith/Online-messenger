@@ -4,13 +4,15 @@ import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import * as Yup from 'yup';
 import { validationSchema } from '../utils/validation';
+import { useTranslation } from 'react-i18next';
+
 
 import '../App.css';
 
 function Registration() {
   const navigate = useNavigate();
+  const { t } = useTranslation(); 
 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     const { username, password } = values;
@@ -52,7 +54,7 @@ function Registration() {
                   >
                     {({ errors, touched, isSubmitting }) => (
                       <Form>
-                        <h1 className="text-center mb-4">Регистрация</h1>
+                        <h1 className="text-center mb-4">{t('form.registrationHeader')}</h1>
                         <div className="form-group">
                           <div className="form-floating mb-3">
                             <Field
@@ -60,7 +62,7 @@ function Registration() {
                               name="username"
                               className={`form-control ${errors.username && touched.username ? 'is-invalid' : ''}`}
                             />
-                            <label htmlFor="username">Имя:</label>
+                            <label htmlFor="username">{t('form.name')}</label>
                             {errors.username && touched.username && (
                               <div className="invalid-feedback">{errors.username}</div>
                             )}
@@ -73,7 +75,7 @@ function Registration() {
                               name="password"
                               className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
                             />
-                            <label htmlFor="password">Пароль:</label>
+                            <label htmlFor="password">{t('form.password')}</label>
                             {errors.password && touched.password && (
                               <div className="invalid-feedback">{errors.password}</div>
                             )}
@@ -85,7 +87,7 @@ function Registration() {
                               name="confirmPassword"
                               className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
                             />
-                            <label htmlFor="confirmPassword">Подтверждение пароля:</label>
+                            <label htmlFor="confirmPassword">{t('form.passwordCheck')}</label>
                             {errors.confirmPassword && touched.confirmPassword && (
                               <div className="invalid-feedback">{errors.confirmPassword}</div>
                             )}
@@ -94,7 +96,7 @@ function Registration() {
                         </div>
                         <div className="text-center">
                           <button type="submit" className="btn btn-outline-primary" disabled={isSubmitting}>
-                            Отправить
+                          {t('form.send')}
                           </button>
                         </div>
                         {errors.general && (
@@ -109,7 +111,7 @@ function Registration() {
               </div>
               <div className="card-footer text-center">
                 <p>
-                  Есть аккаунт? <a href="/">Войти</a>.
+                {t('form.withAccount')} <a href="/">{t('form.enter')}</a>.
                 </p>
               </div>
             </div>

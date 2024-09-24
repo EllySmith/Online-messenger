@@ -10,8 +10,11 @@ import { fetchChannels, changeCurrentChannel } from '../store/channelsSlice';
 import { fetchMessages } from '../store/messagesSlice';
 import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
+import { useTranslation } from 'react-i18next';
+
 
 function ChatPage() {
+  const { t } = useTranslation(); 
   const dispatch = useDispatch();
   const messages = useSelector(state => state.messages.messages);
   const [messageInput, setMessageInput] = useState('');
@@ -84,7 +87,7 @@ function ChatPage() {
                 <div className="col p-0 d-flex flex-column h-100">
                   <div className="bg-light mb-4 p-3 shadow-sm small">
                     <p className="m-0"><b>#{channelName}</b></p>
-                    <span className="text-muted">{filteredMessages.length} сообщений</span>
+                    <span className="text-muted">{filteredMessages.length} {t('chat.messages')}</span>
                   </div>
   
                   <MessageBox filteredMessages={filteredMessages} messageListRef={messageListRef} channelName={channelName}/>
