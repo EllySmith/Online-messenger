@@ -4,3 +4,23 @@ html, body, #root {
   padding: 0;
 }
 
+.eng {
+  background-image: url('./images/eng.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.it {
+  background-image: url('./images/it.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ru {
+  background-image: url('./images/ru.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

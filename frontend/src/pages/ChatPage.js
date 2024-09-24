@@ -17,6 +17,7 @@ function ChatPage() {
   const { t } = useTranslation(); 
   const dispatch = useDispatch();
   const messages = useSelector(state => state.messages.messages);
+  const channels = useSelector(state => state.channels.channels)
   const [messageInput, setMessageInput] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
   const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -29,12 +30,6 @@ function ChatPage() {
     dispatch(fetchMessages());
     console.log(current);
   }, [dispatch, current]);
-
-  useEffect(() => {
-    if (messageInputRef.current) {
-      messageInputRef.current.focus();
-    }
-  }, [messageInput]);
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -70,6 +65,9 @@ function ChatPage() {
     const channel = state.channels.channels.find(c => c.id === currentChannelId);
     return channel ? channel.name : 'unknown';
   });
+  useEffect(() => {    
+    messageInputRef.current.focus();
+}, [filteredMessages, channels]);
 
   return (
       <div className='h-100'>

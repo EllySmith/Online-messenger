@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
+
 
 const Input = React.forwardRef(({ value, onChange, onKeyDown, disabled, onClick }, ref) => {
+    const { t } = useTranslation();
 
      return (
      <form noValidate="" className="py-1 border rounded-2 w-100" onSubmit={onClick}>
@@ -8,7 +11,7 @@ const Input = React.forwardRef(({ value, onChange, onKeyDown, disabled, onClick 
  
        <input 
          name="body"
-         placeholder="Type your message..." 
+         placeholder={t('chat.messagePlaceholder')}
          value={value}
          onChange={onChange}
          onKeyDown={onKeyDown}
@@ -17,7 +20,7 @@ const Input = React.forwardRef(({ value, onChange, onKeyDown, disabled, onClick 
          className='border-0 p-0 ps-2 form-control'
        />
        <button type="submit" className="btn btn-group-vertical">
-       Send      
+       {t('chat.sendMessage')} 
        </button>
      </div>
      </form>

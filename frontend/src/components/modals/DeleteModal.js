@@ -16,6 +16,12 @@ function DeleteModal({id}) {
   const hide = () => {
     dispatch(hideModal());
   }
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') { 
+      e.preventDefault(); 
+      handleDelete(); 
+    }
+  };
   return (
         <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
@@ -25,7 +31,7 @@ function DeleteModal({id}) {
           <Button variant="secondary" onClick={hide}>
           {t('modals.no')}
           </Button>
-          <Button variant="primary" onClick={handleDelete}>
+          <Button variant="primary" onClick={handleDelete} onKeyDown={handleKeyDown}>
           {t('modals.yes')}
           </Button>
         </Modal.Footer>

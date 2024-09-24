@@ -19,17 +19,18 @@ const Header = () => {
 
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-      <div className="container">
-        <a className="navbar-brand" href="/">Chat</a>
-        {localStorage.username && (
-          <button type="button" className="btn btn-primary" onClick={logOut}>
-            {t('header.quit')}
-          </button>
-        )}
-        <div>
-          <button onClick={() => changeLanguage('eng')}>English</button>
-          <button onClick={() => changeLanguage('it')}>Italian</button>
-          <button onClick={() => changeLanguage('ru')}>Russian</button>
+      <div className="container d-flex justify-content-between align-items-center">
+        <span className="navbar-brand">{localStorage.username && <p>Hello, {localStorage.username}!</p>}</span>
+        
+        <div className="d-flex align-items-center justify-items-center">
+          {localStorage.username && (
+            <button type="button" className="btn btn-outline-primary" onClick={logOut} style={{ marginRight: '1rem' }}>
+              {t('header.quit')}
+            </button>
+          )}
+          <button className="btn btn-light eng" onClick={() => changeLanguage('eng')}></button>
+          <button className="btn btn-light mx-2 it" onClick={() => changeLanguage('it')}></button>
+          <button className="btn btn-light ru" onClick={() => changeLanguage('ru')}></button>
         </div>
       </div>
     </nav>

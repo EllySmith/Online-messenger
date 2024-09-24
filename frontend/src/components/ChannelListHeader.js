@@ -17,18 +17,21 @@ function ChannelListHeader() {
   dispatch(showModal());
  };
  return (
-    <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
-      <b>{t('chat.channels')}</b>
-      <button
-        type="button"
-        className="p-0 text-primary btn btn-group-vertical"
-        onClick={handleAddClick}
-      >
-        <p><b>+</b></p>
-      </button>
+  <div className="d-flex justify-content-between align-items-center mb-2 ps-4 pe-2 p-4">
+  <b className='m-0'>{t('chat.channels')}</b>
+  <div className="ms-auto">
+  <button
+    type="button"
+    className="btn btn-outline-primary"
+    onClick={handleAddClick}
+  >
+    <b>+</b>
+  </button>
+  </div>
 
-    { type === 'add'&& <AddModal/>}
-    </div>
+  {type === 'add' && <AddModal />}
+</div>
+
   );
 }
 

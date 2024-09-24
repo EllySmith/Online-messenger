@@ -21,6 +21,12 @@ function RenameModal({id}) {
 const hide = () => {
   dispatch(hideModal());
 }
+const handleKeyDown = (e) => {
+  if (e.key === 'Enter') { 
+    e.preventDefault(); 
+    handleRename(); 
+  }
+};
   return (
     <div>
       <Modal show={visible} onHide={hide}>
@@ -33,6 +39,7 @@ const hide = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="form-control"
+                  onKeyDown={handleKeyDown}
                 />
         </Modal.Body>
         <Modal.Footer>

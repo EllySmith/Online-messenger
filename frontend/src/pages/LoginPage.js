@@ -25,7 +25,7 @@ const LoginPage = (index) => {
           localStorage.setItem('username', values.username);
           navigate('/success');
           } catch (error) {
-            setError('Неверное имя пользователя или пароль');
+            setError(t('errors.wrongPassword'));
             console.log('error received');
           }
         };

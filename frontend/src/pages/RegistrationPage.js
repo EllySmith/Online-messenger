@@ -4,15 +4,16 @@ import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import { validationSchema } from '../utils/validation';
+import { useValidationSchema } from '../utils/validation';
 import { useTranslation } from 'react-i18next';
-
+import RegImage from '../images/RegistrationPage.png'
 
 import '../App.css';
 
 function Registration() {
   const navigate = useNavigate();
   const { t } = useTranslation(); 
+  const validationSchema = useValidationSchema();
 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     const { username, password } = values;
@@ -44,7 +45,7 @@ function Registration() {
             <div className="card shadow-sm">
               <div className="card-body row p-4">
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                  <img src="../1.jpg" alt="Hexlet Chat" />
+                <img src={RegImage} alt="Hexlet Chat" style={{ width: '100%'}}/>
                 </div>
                 <div className="col-12 col-md-6 mt-3 mt-md-0">
                   <Formik

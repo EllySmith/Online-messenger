@@ -1,7 +1,7 @@
 export const ru = {
      form: {
           loginHeader: "Войти",
-          registrationHeader: "Зарегистрироваться",
+          registrationHeader: "Регистрация",
           name: "Имя",
           password: "Пароль",
           passwordCheck: "Подвердите пароль",
@@ -32,8 +32,19 @@ export const ru = {
           add: "Добавить"
      },
      header: {
-          quit: "Выйти."
+          quit: "Выход"
+     },
+     errors: {
+      wrongPassword: "Неверный пароль.",
+      noName: 'Имя обязательно',
+      nameTooShort: 'Имя должно содержать минимум 3 символа',
+      nameTooLong: 'Имя не должно превышать 20 символов',
+      passwordTooShort: 'Пароль должен содержать минимум 6 символов',
+      noPassword: 'Пароль обязателен',
+      noMatch:'Пароли не совпадают',
+      noSecondPassword: 'Подтверждение пароля обязательно',
      }
+
    };
    
    export const eng = {
@@ -70,8 +81,18 @@ export const ru = {
        add: "Add"
      },
      header: {
-       quit: "Log Out."
-     }
+       quit: "Log Out"
+     },
+     errors: {
+      wrongPassword: "Incorrect password.",
+      noName: "Name is required.",
+      nameTooShort: "Name must be at least 3 characters.",
+      nameTooLong: "Name must not exceed 20 characters.",
+      passwordTooShort: "Password must be at least 6 characters.",
+      noPassword: "Password is required.",
+      noMatch: "Passwords do not match.",
+      noSecondPassword: "Password confirmation is required.",
+    }    
    };
 
    export const it = {
@@ -107,7 +128,17 @@ export const ru = {
        add: "Aggiungi"
      },
      header: {
-       quit: "Disconnettiti."
-     }
+       quit: "Log Out"
+     },
+     errors: {
+      wrongPassword: "Password errata.",
+      noName: "Il nome è obbligatorio.",
+      nameTooShort: "Il nome deve contenere almeno 3 caratteri.",
+      nameTooLong: "Il nome non deve superare i 20 caratteri.",
+      passwordTooShort: "La password deve contenere almeno 6 caratteri.",
+      noPassword: "La password è obbligatoria.",
+      noMatch: "Le password non corrispondono.",
+      noSecondPassword: "La conferma della password è obbligatoria.",
+    }    
    };
    

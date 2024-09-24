@@ -24,6 +24,13 @@ function AddModal() {
     dispatch(hideModal());
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') { 
+      e.preventDefault(); 
+      handleAddChannel(); 
+    }
+  };
+
   return (
     <div>
       <Modal show={visible} onHide={hide}>
@@ -37,6 +44,7 @@ function AddModal() {
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="Enter channel name"
+            onKeyDown={handleKeyDown}
           />
         </Modal.Body>
         <Modal.Footer>
