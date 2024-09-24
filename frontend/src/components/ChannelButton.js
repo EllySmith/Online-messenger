@@ -1,40 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeChannelName, changeCurrentChannel, deleteChannel } from '../store/channelsSlice';
-import DeleteModal from './DeleteModal';
-import RenameModal from './RenameModal';
+import { changeCurrentChannel } from '../store/channelsSlice';
+import DeleteModal from './modals/DeleteModal';
+import RenameModal from './modals/RenameModal';
 import ChannelMenu from './ChannelMenu';
+import { changeModalType, showModal } from '../store/modalSlice';
+
 
 const ChannelButton = ({ id, name, removable }) => {
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showRenameModal, setShowRenameModal] = useState(false);
   const dispatch = useDispatch();
+  const type = useSelector((state) => state.modal.type);
 
   const handleClick = () => {
     dispatch(changeCurrentChannel(id));
   };
 
-  const handleDeleteClick = () => {
-    setShowDeleteModal(true);
-  };
-
   const handleRenameClick = () => {
-    setShowRenameModal(true);
+    dispatch(changeModalType('rename'));
+    dispatch(showModal());
   };
 
-  const handleDelete = () => {
-    dispatch(deleteChannel(id));
-    setShowDeleteModal(false);
-  };
-
-  const handleRename = (newName) => {
-    dispatch(changeChannelName(id, newName));
-    setShowRenameModal(false);
-  };
-
-  const handleCancel = () => {
-    setShowDeleteModal(false);
-    setShowRenameModal(false);
+  const handleDeleteClick = () => {
+    dispatch(changeModalType('delete'));
+    dispatch(showModal());
   };
 
   const currentChannelId = useSelector(state => state.channels.currentChannelId);
@@ -56,9 +44,8 @@ const ChannelButton = ({ id, name, removable }) => {
         </div>
       </li>
 
-      {showDeleteModal && <DeleteModal handleCancel={handleCancel} handleDelete={handleDelete}/>}
-
-      {showRenameModal && <RenameModal handleCancel={handleCancel} handleRename={handleRename}/>}
+      {type === 'delete' && <DeleteModal id={id} />}
+      {type === 'rename' && <RenameModal id={id} />}
     </>
   );
 };

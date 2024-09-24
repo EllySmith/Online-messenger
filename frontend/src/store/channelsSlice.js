@@ -36,10 +36,10 @@ export const deleteChannel = createAsyncThunk(
 
 export const changeChannelName = createAsyncThunk(
   'chat/changeChannelName',
-  async ({ channelId, newName }, thunkAPI) => {
+  async ({ id, name }, thunkAPI) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.patch(apiRoutes.channelPath(channelId), { name: newName }, {
+      const response = await axios.patch(apiRoutes.channelPath(id), { name }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
@@ -134,13 +134,18 @@ const channelsSlice = createSlice({
         const updatedChannel = action.payload;
         const channelIndex = state.channels.findIndex(channel => channel.id === updatedChannel.id);
         if (channelIndex >= 0) {
-          state.channels[channelIndex] = updatedChannel;
+          state.channels[channelIndex] = updatedChannel; 
         }
       })
       .addCase(changeChannelName.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
-      });
+        state.error = action.payload; 
+      })
+      .addCase(addChannel.fulfilled, (state, action) => {
+        state.loading = false;
+        state.channels.push(action.payload); 
+        state.currentChannelId = action.payload.id; 
+      })
   },
 });
 
