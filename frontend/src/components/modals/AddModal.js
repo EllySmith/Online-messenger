@@ -7,7 +7,10 @@ import { randomKey } from "../../utils/different";
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import leoProfanity from 'leo-profanity';
 
+leoProfanity.loadDictionary('en');
+leoProfanity.loadDictionary('ru');
 
 function AddModal() {
   const { t } = useTranslation();
@@ -47,7 +50,7 @@ function AddModal() {
             type="text"
             className="form-control"
             value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
             placeholder="Enter channel name"
             onKeyDown={handleKeyDown}
           />

@@ -25,10 +25,13 @@ The application will be available at `http://localhost:3000/`.
 
 ## Usage
 
+- **Change Localisation:** Chose the language of the app: italian/englidh/russian.
 - **Register/Login:** Create an account or log in to start chatting.
 - **Create Channels:** Create group chat with custom name in addition to default channels.
 - **Delete/Rename Channels:** Delete or rename your custom channels.
 - **Real-time Messaging:** Send messages instantly with other users.
+- **Pop up notifications:** Get notifications when you manage channels.
+
   
 ## Technologies
 
@@ -36,6 +39,8 @@ The application will be available at `http://localhost:3000/`.
 - Redux (state management)
 - Bootstrap (styling)
 - Socket.io (real-time communication)
+- Toastify (notifications)
+- i18next (localisation)
 
 
 

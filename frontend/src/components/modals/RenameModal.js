@@ -5,8 +5,11 @@ import { hideModal } from '../../store/modalSlice';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 import "react-toastify/dist/ReactToastify.minimal.css";
 
+leoProfanity.loadDictionary('en');
+leoProfanity.loadDictionary('ru');
 
 function RenameModal({id}) {
   const { t } = useTranslation();
@@ -41,7 +44,7 @@ const handleKeyDown = (e) => {
         <input
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setName(leoProfanity.clean(e.target.value))}
                   className="form-control"
                   onKeyDown={handleKeyDown}
                 />

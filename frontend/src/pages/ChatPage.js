@@ -12,8 +12,11 @@ import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 import "react-toastify/dist/ReactToastify.minimal.css";
 
+leoProfanity.loadDictionary('en');
+leoProfanity.loadDictionary('ru');
 
 function ChatPage() {
   const { t } = useTranslation(); 
@@ -96,7 +99,7 @@ function ChatPage() {
                     <div className="input-group has-validation">
                       <Input
                         value={messageInput}
-                        onChange={(e) => setMessageInput(e.target.value)}
+                        onChange={(e) => setMessageInput(leoProfanity.clean(e.target.value))}
                         onKeyDown={handleKeyDown}
                         disabled={sendingMessage}
                         ref={messageInputRef}
