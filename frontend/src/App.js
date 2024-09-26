@@ -9,9 +9,21 @@ import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import ChatPage from './pages/ChatPage';
 import RegistrationPage from './pages/RegistrationPage';
+import { Provider, ErrorBoundary } from '@rollbar/react'; 
 import './i18n';
 
 let socket;
+
+
+const rollbarConfig = {
+  accessToken: '9fdca46296a84ba8bda423b6d99d79e5',
+  environment: 'testenv',
+};
+
+function TestError() {
+  const a = null;
+  return a.hello();
+}
   
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +56,8 @@ function App() {
   }, [dispatch]);
     
   return (
+    <Provider config={rollbarConfig}>
+      <ErrorBoundary>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -52,6 +66,9 @@ function App() {
           <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       </BrowserRouter>
+      <TestError />
+      </ErrorBoundary>
+      </Provider>
     );
 }
 
