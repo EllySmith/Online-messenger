@@ -2,14 +2,14 @@ export const ru = {
      form: {
           loginHeader: "Войти",
           registrationHeader: "Регистрация",
-          name: "Имя",
+          name: "Ваш ник",
           password: "Пароль",
           passwordCheck: "Подвердите пароль",
           withoutAccount: "Нет аккаунта?",
           withAccount: "Есть аккаунт?",
           send: "Отправить",
-          register: "Зарегистрироваться.",
-          enter: "Войти."
+          register: "Зарегистрироваться",
+          enter: "Войти"
      },
      chat: {
           channels: "Каналы",
@@ -23,7 +23,7 @@ export const ru = {
           yes: "Да",
           no: "Нет",
           renameHeader: "Переименовать канал:",
-          renamePlaceholder: "Введите новое имя",
+          renamePlaceholder: "Имя канала",
           rename: "Переименовать",
           cancel: "Отмена",
           addHeader: "Добавить канал:",
@@ -35,19 +35,20 @@ export const ru = {
           quit: "Выход"
      },
      errors: {
-      wrongPassword: "Неверный пароль.",
+      wrongPassword: "Неверные имя пользователя или пароль",
       noName: 'Имя обязательно',
-      nameTooShort: 'Имя должно содержать минимум 3 символа',
+      nameTooShort: 'От 3 до 20 символов',
       nameTooLong: 'Имя не должно превышать 20 символов',
-      passwordTooShort: 'Пароль должен содержать минимум 6 символов',
+      passwordTooShort: 'Не менее 6 символов',
       noPassword: 'Пароль обязателен',
-      noMatch:'Пароли не совпадают',
+      noMatch:'Пароли должны совпадать',
       noSecondPassword: 'Подтверждение пароля обязательно',
+      noconnection: 'Ошибка соединения'
      },
      notify: {
-      rename: "Имя канала изменено.",
-      add: "Канал добавлен.",
-      delete: "Канал удален."
+      rename: "Канал переименован",
+      add: "Канал создан",
+      delete: "Канал удалён"
      }
 
    };

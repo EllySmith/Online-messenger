@@ -31,7 +31,7 @@ The application will be available at `http://localhost:3000/`.
 - **Delete/Rename Channels:** Delete or rename your custom channels.
 - **Real-time Messaging:** Send messages instantly with other users.
 - **Pop up notifications:** Get notifications when you manage channels.
-- **Swear words in English and russian are filtered:** Don't swear!!!
+- **Swear words in English and Russian are filtered:** Don't swear!!!
 
 
   
