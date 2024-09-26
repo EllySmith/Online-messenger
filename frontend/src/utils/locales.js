@@ -77,7 +77,7 @@ export const ru = {
        deleteHeader: "Delete channel?",
        yes: "Yes",
        no: "No",
-       renameHeader: "Rename channel:",
+       renameHeader: "Rename channel",
        renamePlaceholder: "Enter new name",
        rename: "Rename",
        cancel: "Cancel",
