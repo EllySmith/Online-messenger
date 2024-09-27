@@ -20,16 +20,12 @@ const rollbarConfig = {
   environment: 'testenv',
 };
 
-function TestError() {
-  const a = null;
-  return a.hello();
-}
   
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!socket) {
-      socket = io('http://localhost:3000');
+      socket = io('http://localhost:3001');
     }
 
     const setupSocketListeners = () => {
@@ -66,7 +62,6 @@ function App() {
           <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       </BrowserRouter>
-      <TestError />
       </ErrorBoundary>
       </Provider>
     );
