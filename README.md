@@ -17,11 +17,11 @@ Real-time messaging using Socket.io
 
 ## Installation
 
-1. ***make install*** 
+1. **make install** 
 
-2. ***make start***
+2. **make start**
 
-2. ***make build***
+2. **make build**
 
 The application will be available at `http://localhost:3000/`.
 
