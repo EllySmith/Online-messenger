@@ -17,9 +17,11 @@ Real-time messaging using Socket.io
 
 ## Installation
 
-1. Install the server with ***npm install*** command in root directory. Then start it with ***npm start***.
+1. ***make install*** 
 
-2. Start the app with ***npm install*** in '/frontend' directory. Then start it with ***npm start***.
+2. ***make start***
+
+2. ***make build***
 
 The application will be available at `http://localhost:3000/`.
 
