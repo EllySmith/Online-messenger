@@ -6,4 +6,4 @@ build:
 	cd frontend && npm run build
 
 start:
-	cd backend && npx start-server -s ./frontend/build
+	npx start-server -s ./frontend/build
