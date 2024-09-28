@@ -61,7 +61,7 @@ return (
         </div>
           <div className="form-floating mb-3 me-3">
             <Field
-              type="text"
+              type="password"
               name="password"
               className="form-control"
               id="password"

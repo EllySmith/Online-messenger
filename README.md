@@ -27,7 +27,7 @@ The application will be available at `http://localhost:3000/`.
 
 ## Usage
 
-- **Change Localisation:** Chose the language of the app: italian/englidh/russian.
+- **Change Localisation:** Chose the language of the app: italian/english/russian.
 - **Register/Login:** Create an account or log in to start chatting.
 - **Create Channels:** Create group chat with custom name in addition to default channels.
 - **Delete/Rename Channels:** Delete or rename your custom channels.
