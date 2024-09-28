@@ -56,10 +56,10 @@ function App() {
       <ErrorBoundary>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/success" element={<ChatPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/" element={<ChatPage />} />
+          <Route path="/signup" element={<RegistrationPage />} />
         </Routes>
       </BrowserRouter>
       </ErrorBoundary>
