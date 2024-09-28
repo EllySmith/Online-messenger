@@ -25,7 +25,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!socket) {
-      socket = io('');
+      socket = io();
     }
 
     const setupSocketListeners = () => {
