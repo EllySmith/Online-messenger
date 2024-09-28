@@ -8,7 +8,7 @@ export const ru = {
           withoutAccount: "Нет аккаунта?",
           withAccount: "Есть аккаунт?",
           send: "Отправить",
-          register: "Зарегистрироваться",
+          register: "Регистрация",
           enter: "Войти"
      },
      chat: {
