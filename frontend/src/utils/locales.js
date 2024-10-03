@@ -16,7 +16,7 @@ export const ru = {
      chat: {
           channels: "Каналы",
           messages: "сообщений",
-          messagePlaceholder: "Введите сообщение",
+          messagePlaceholder: "Новое сообщение",
           sendMessage: "Отправить",
      },
      modals: {
@@ -46,7 +46,7 @@ export const ru = {
       noMatch:'Пароли должны совпадать',
       noSecondPassword: 'Обязательное поле',
       noconnection: 'Ошибка соединения',
-      userExists: 'Такой пользователь уже существует'
+      userExists: "Такой пользователь уже существует"
      },
      notify: {
       rename: "Канал переименован",
