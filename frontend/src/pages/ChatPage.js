@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ChannelList from '../components/ChannelList';
 import Input from '../components/ChatInput';
 import Header from '../components/Header';
@@ -21,6 +22,7 @@ leoProfanity.loadDictionary('ru');
 function ChatPage() {
   const { t } = useTranslation(); 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const messages = useSelector(state => state.messages.messages);
   const channels = useSelector(state => state.channels.channels)
   const [messageInput, setMessageInput] = useState('');
@@ -29,6 +31,13 @@ function ChatPage() {
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
   const notify = () => toast(`${t('notify.noconnection')}`);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      navigate('/signup'); 
+    }
+  }, [navigate]);
   
   useEffect(() => {
     dispatch(fetchChannels());
