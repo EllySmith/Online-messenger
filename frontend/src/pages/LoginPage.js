@@ -70,7 +70,11 @@ return (
             <label htmlFor="password">{t('form.password')}</label>
           </div>
           <div className="text-center">
-          <button type="submit" className="mb-3 btn btn-outline-primary">{t('form.send')}</button>
+          <button type="submit" 
+          className="mb-3 btn btn-outline-primary"
+          aria-label="general">
+            {t('form.send')}
+            </button>
           </div>
           
       </Form>

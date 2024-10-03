@@ -96,7 +96,10 @@ function Registration() {
                         </div>
                         </div>
                         <div className="text-center">
-                          <button type="submit" className="btn btn-outline-primary" disabled={isSubmitting}>
+                          <button type="submit" 
+                          className="btn btn-outline-primary" 
+                          disabled={isSubmitting}
+                          aria-label="general">
                           {t('form.send')}
                           </button>
                         </div>
