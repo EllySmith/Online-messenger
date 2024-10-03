@@ -16,7 +16,7 @@ function Registration() {
   const validationSchema = useValidationSchema();
   const [error, setError] = useState(''); 
 
-  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     const { username, password } = values;
     try {
       setSubmitting(true);
@@ -24,7 +24,6 @@ function Registration() {
       const token = response.data.token;
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
-      setErrors({});
       navigate('/'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
@@ -65,13 +64,11 @@ function Registration() {
                               className={`form-control ${errors.username && touched.username ? 'is-invalid' : ''}`}
                               placeholder={t('form.name')}
                             />
-                            <label htmlFor="username">{t('form.name')}</label>
+                            <label for="username" className="form-label">{t('form.name')}</label>
                             {errors.username && touched.username && (
                               <div className="invalid-feedback">{errors.username}</div>
                             )}
                           </div>
-                        </div>
-                        <div className="form-group">
                           <div className="form-floating mb-3">
                             <Field
                               type="password"
@@ -79,12 +76,11 @@ function Registration() {
                               className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
                               placeholder={t('form.password')}
                             />
-                            <label htmlFor="password">{t('form.password')}</label>
+                            <label for="password" className="form-label">{t('form.password')}</label>
                             {errors.password && touched.password && (
                               <div className="invalid-feedback">{errors.password}</div>
                             )}
                           </div>
-                          <div className="form-group">
                           <div className="form-floating mb-3">
                             <Field
                               type="password"
@@ -92,11 +88,10 @@ function Registration() {
                               className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
                               placeholder={t('form.passwordCheck')}
                             />
-                            <label htmlFor="confirmPassword">{t('form.passwordCheck')}</label>
+                            <label for="confirmPassword" className="form-label">{t('form.passwordCheck')}</label>
                             {errors.confirmPassword && touched.confirmPassword && (
                               <div className="invalid-feedback">{errors.confirmPassword}</div>
                             )}
-                          </div>
                         </div>
                         </div>
                         <div className="text-center">
