@@ -9,7 +9,7 @@ const Header = () => {
   const logOut = () => {
     localStorage.token = '';
     localStorage.username = '';
-    navigate('/');
+    navigate('/login');
   };
 
   const changeLanguage = (lng) => {
