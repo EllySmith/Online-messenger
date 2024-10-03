@@ -81,7 +81,7 @@ return (
   <div className="card-footer text-center pt-3">
             <p>
               {error && <div className="error-message">{error}</div>}
-              {t('form.withoutAccount')} <a href='/registration'>{t('form.register')}</a>
+              {t('form.withoutAccount')} <a href='/signup'>{t('form.register')}</a>
             </p>
           </div>
   </div>
