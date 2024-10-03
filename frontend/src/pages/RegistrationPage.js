@@ -59,6 +59,7 @@ function Registration() {
                         <div className="form-group">
                           <div className="form-floating mb-3">
                             <Field
+                              id="username"
                               type="text"
                               name="username"
                               className={`form-control ${errors.username && touched.username ? 'is-invalid' : ''}`}
@@ -71,6 +72,7 @@ function Registration() {
                           </div>
                           <div className="form-floating mb-3">
                             <Field
+                              id="password"
                               type="password"
                               name="password"
                               className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
@@ -83,6 +85,7 @@ function Registration() {
                           </div>
                           <div className="form-floating mb-3">
                             <Field
+                              id="confirmPassword"
                               type="password"
                               name="confirmPassword"
                               className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
