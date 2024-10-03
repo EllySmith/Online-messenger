@@ -18,6 +18,7 @@ const Input = React.forwardRef(({ value, onChange, onKeyDown, disabled, onClick 
          disabled={disabled}
          ref={ref}
          className='border-0 p-0 ps-2 form-control'
+         aria-label={t('chat.newMessage')}
        />
        <button type="submit" className="btn btn-group-vertical">
        {t('chat.sendMessage')} 
