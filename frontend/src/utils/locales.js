@@ -5,7 +5,7 @@ export const ru = {
           registrationHeader: "Регистрация",
           name: "Имя пользователя",
           password: "Пароль",
-          passwordCheck: "Подвердите пароль",
+          passwordCheck: "Подтвердите пароль",
           withoutAccount: "Нет аккаунта?",
           withAccount: "Есть аккаунт?",
           send: "Отправить",
