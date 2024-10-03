@@ -64,7 +64,7 @@ function Registration() {
                               className={`form-control ${errors.username && touched.username ? 'is-invalid' : ''}`}
                               placeholder={t('form.name')}
                             />
-                            <label for="username" className="form-label">{t('form.name')}</label>
+                            <label htmlFor="username" className="form-label">{t('form.name')}</label>
                             {errors.username && touched.username && (
                               <div className="invalid-feedback">{errors.username}</div>
                             )}
@@ -76,7 +76,7 @@ function Registration() {
                               className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
                               placeholder={t('form.password')}
                             />
-                            <label for="password" className="form-label">{t('form.password')}</label>
+                            <label htmlFor="password" className="form-label">{t('form.password')}</label>
                             {errors.password && touched.password && (
                               <div className="invalid-feedback">{errors.password}</div>
                             )}
@@ -88,7 +88,7 @@ function Registration() {
                               className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
                               placeholder={t('form.passwordCheck')}
                             />
-                            <label for="confirmPassword" className="form-label">{t('form.passwordCheck')}</label>
+                            <label htmlFor="confirmPassword" className="form-label">{t('form.passwordCheck')}</label>
                             {errors.confirmPassword && touched.confirmPassword && (
                               <div className="invalid-feedback">{errors.confirmPassword}</div>
                             )}
