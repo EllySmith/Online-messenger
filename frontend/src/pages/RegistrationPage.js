@@ -103,7 +103,7 @@ function Registration() {
                           className="btn btn-outline-primary" 
                           disabled={isSubmitting}
                           aria-label="general">
-                          {t('form.send')}
+                          {t('form.registration')}
                           </button>
                         </div>
                         {errors.general && (

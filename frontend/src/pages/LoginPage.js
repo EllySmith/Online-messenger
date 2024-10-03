@@ -55,9 +55,9 @@ return (
         name="username"
         className="form-control"
         id="username"
-        placeholder={t('form.name')}
+        placeholder={t('form.yourname')}
         />
-        <label htmlFor="username">{t('form.name')}</label>
+        <label htmlFor="username">{t('form.yourname')}</label>
         </div>
           <div className="form-floating mb-3 me-3">
             <Field
@@ -73,7 +73,7 @@ return (
           <button type="submit" 
           className="mb-3 btn btn-outline-primary"
           aria-label="general">
-            {t('form.send')}
+            {t('form.enter')}
             </button>
           </div>
           

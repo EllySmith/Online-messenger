@@ -1,6 +1,7 @@
 export const ru = {
      form: {
           loginHeader: "Войти",
+          yourname: "Ваш ник",
           registrationHeader: "Регистрация",
           name: "Имя пользователя",
           password: "Пароль",
@@ -9,6 +10,7 @@ export const ru = {
           withAccount: "Есть аккаунт?",
           send: "Отправить",
           register: "Регистрация",
+          registration: "Зарегистрироваться",
           enter: "Войти"
      },
      chat: {
@@ -36,13 +38,13 @@ export const ru = {
      },
      errors: {
       wrongPassword: "Неверные имя пользователя или пароль",
-      noName: 'Имя обязательно',
+      noName: 'Обязательное поле',
       nameTooShort: 'От 3 до 20 символов',
       nameTooLong: 'Имя не должно превышать 20 символов',
       passwordTooShort: 'Не менее 6 символов',
-      noPassword: 'Пароль обязателен',
+      noPassword: 'Обязательное поле',
       noMatch:'Пароли должны совпадать',
-      noSecondPassword: 'Подтверждение пароля обязательно',
+      noSecondPassword: 'Обязательное поле',
       noconnection: 'Ошибка соединения',
       userExists: 'Такой пользователь уже существует'
      },
