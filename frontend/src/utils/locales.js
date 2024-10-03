@@ -43,7 +43,8 @@ export const ru = {
       noPassword: 'Пароль обязателен',
       noMatch:'Пароли должны совпадать',
       noSecondPassword: 'Подтверждение пароля обязательно',
-      noconnection: 'Ошибка соединения'
+      noconnection: 'Ошибка соединения',
+      userExists: 'Такой пользователь уже существует'
      },
      notify: {
       rename: "Канал переименован",

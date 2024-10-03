@@ -27,7 +27,7 @@ function Registration() {
       navigate('/'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
-        setErrors({ general: 'Имя пользователя уже существует' });
+        setErrors({ general: t('error.userExists') });
       } else {
         setErrors({ general: 'Произошла ошибка при регистрации' });
       }
@@ -62,6 +62,7 @@ function Registration() {
                               type="text"
                               name="username"
                               className={`form-control ${errors.username && touched.username ? 'is-invalid' : ''}`}
+                              placeholder={t('form.name')}
                             />
                             <label htmlFor="username">{t('form.name')}</label>
                             {errors.username && touched.username && (
@@ -75,6 +76,7 @@ function Registration() {
                               type="password"
                               name="password"
                               className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
+                              placeholder={t('form.password')}
                             />
                             <label htmlFor="password">{t('form.password')}</label>
                             {errors.password && touched.password && (
@@ -87,6 +89,7 @@ function Registration() {
                               type="password"
                               name="confirmPassword"
                               className={`form-control ${errors.confirmPassword && touched.confirmPassword ? 'is-invalid' : ''}`}
+                              placeholder={t('form.passwordCheck')}
                             />
                             <label htmlFor="confirmPassword">{t('form.passwordCheck')}</label>
                             {errors.confirmPassword && touched.confirmPassword && (
