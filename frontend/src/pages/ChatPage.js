@@ -35,7 +35,7 @@ function ChatPage() {
   useEffect(() => {
     const token = localStorage.getItem('token'); 
     if (!token) {
-      navigate('/signup'); 
+      navigate('/login'); 
     }
   }, [navigate]);
   
