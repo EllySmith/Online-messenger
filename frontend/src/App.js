@@ -2,7 +2,7 @@ import './App.css';
 import io from 'socket.io-client';
 import React, { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import {deleteChannel, changeChannelName } from './store/channelsSlice';
 import { addMessage,  } from './store/messagesSlice';
 import ErrorPage from './pages/ErrorPage'
@@ -23,6 +23,15 @@ const rollbarConfig = {
   
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      navigate('/signup'); 
+    }
+  }, [navigate]);
+
   useEffect(() => {
     if (!socket) {
       socket = io();
