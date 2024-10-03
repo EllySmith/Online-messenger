@@ -24,7 +24,7 @@ function Registration() {
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
       setErrors({});
-      navigate('/success'); 
+      navigate('/'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
         setErrors({ general: 'Имя пользователя уже существует' });
