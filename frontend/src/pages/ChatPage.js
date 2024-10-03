@@ -113,7 +113,7 @@ function ChatPage() {
                         disabled={sendingMessage}
                         ref={messageInputRef}
                         className="form-control"
-                        aria-label="general"
+                        aria-label="Новое сообщение"
                         onClick={handleSendMessage}
                       />
                       
