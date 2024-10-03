@@ -16,7 +16,7 @@ export const ru = {
      chat: {
           channels: "Каналы",
           messages: "сообщений",
-          messagePlaceholder: "Новое сообщение",
+          messagePlaceholder: "Введите сообщение...",
           sendMessage: "Отправить",
      },
      modals: {
