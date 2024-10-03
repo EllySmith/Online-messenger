@@ -39,7 +39,7 @@ return (
             <div className="card shadow-sm">
               <div className="card-body row p-4">
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                  <img src={LoginImage} alt="Hexlet Chat" style={{ width: '300px', height: auto }}/>
+                  <img src={LoginImage} alt="Hexlet Chat" style={{ width: '100%', height: auto }}/>
                 </div>
      <Formik
     initialValues={{ username: "", password: "" }}

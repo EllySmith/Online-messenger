@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
@@ -14,6 +14,7 @@ function Registration() {
   const navigate = useNavigate();
   const { t } = useTranslation(); 
   const validationSchema = useValidationSchema();
+  const [error, setError] = useState(''); 
 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     const { username, password } = values;
@@ -27,9 +28,9 @@ function Registration() {
       navigate('/'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
-        setErrors({ general: t('errors.userExists') });
+        setError(t('errors.userExists'));
       } else {
-        setErrors({ general: 'Произошла ошибка при регистрации' });
+        setError('Unknown error');
       }
     } finally {
       setSubmitting(false);
@@ -106,9 +107,9 @@ function Registration() {
                           {t('form.registration')}
                           </button>
                         </div>
-                        {errors.general && (
+                        {error && (
                           <div className="text-danger text-center mt-3">
-                            {errors.general}
+                            {error}
                           </div>
                         )}
                       </Form>
