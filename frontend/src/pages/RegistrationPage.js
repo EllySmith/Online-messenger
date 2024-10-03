@@ -27,7 +27,7 @@ function Registration() {
       navigate('/'); 
     } catch (err) {
       if (err.response && err.response.status === 409) {
-        setErrors({ general: t('error.userExists') });
+        setErrors({ general: t('errors.userExists') });
       } else {
         setErrors({ general: 'Произошла ошибка при регистрации' });
       }
