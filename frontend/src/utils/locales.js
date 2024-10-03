@@ -2,7 +2,7 @@ export const ru = {
      form: {
           loginHeader: "Войти",
           registrationHeader: "Регистрация",
-          name: "Ваш ник",
+          name: "Имя пользователя",
           password: "Пароль",
           passwordCheck: "Подвердите пароль",
           withoutAccount: "Нет аккаунта?",
