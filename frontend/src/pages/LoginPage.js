@@ -23,7 +23,7 @@ const LoginPage = (index) => {
           const token = data.token;
           localStorage.setItem('token', token)
           localStorage.setItem('username', values.username);
-          navigate('/success');
+          navigate('/');
           } catch (error) {
             setError(t('errors.wrongPassword'));
             console.log('error received');
