@@ -18,6 +18,8 @@ import "react-toastify/dist/ReactToastify.minimal.css";
 
 leoProfanity.loadDictionary('en');
 leoProfanity.loadDictionary('ru');
+leoProfanity.add('boobs');
+
 
 function ChatPage() {
   const { t } = useTranslation(); 
