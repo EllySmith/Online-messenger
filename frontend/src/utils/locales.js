@@ -27,11 +27,11 @@ export const ru = {
           renameHeader: "Переименовать канал:",
           renamePlaceholder: "Имя канала",
           rename: "Переименовать",
-          cancel: "Отмена",
+          cancel: "Отменить",
           addHeader: "Добавить канал:",
           addPlaceHolder: "Введите имя",
-          quit: "Отмена",
-          add: "Добавить"
+          quit: "Отменить",
+          add: "Отправить"
      },
      header: {
           quit: "Выход"

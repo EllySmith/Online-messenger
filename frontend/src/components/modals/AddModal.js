@@ -11,6 +11,7 @@ import leoProfanity from 'leo-profanity';
 
 leoProfanity.loadDictionary('en');
 leoProfanity.loadDictionary('ru');
+leoProfanity.add('boobs');
 
 function AddModal() {
   const { t } = useTranslation();
@@ -51,7 +52,8 @@ function AddModal() {
             className="form-control"
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
-            placeholder="Enter channel name"
+            placeholder={t('modals.renamePlaceholder')}
+            aria-label={t('modals.renamePlaceholder')}
             onKeyDown={handleKeyDown}
           />
         </Modal.Body>

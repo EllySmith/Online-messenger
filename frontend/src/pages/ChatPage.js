@@ -26,7 +26,6 @@ function ChatPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messages = useSelector(state => state.messages.messages);
-  const channels = useSelector(state => state.channels.channels)
   const [messageInput, setMessageInput] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
   const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -81,9 +80,14 @@ function ChatPage() {
     const channel = state.channels.channels.find(c => c.id === currentChannelId);
     return channel ? channel.name : 'unknown';
   });
-  useEffect(() => {    
+
+const modalVisible = useSelector((state) => state.modal.visible);
+
+useEffect(() => {    
+  if (!modalVisible) {
     messageInputRef.current.focus();
-}, [filteredMessages, channels]);
+  }
+}, [filteredMessages, modalVisible]);
 
   return (
       <div className='h-100'>
