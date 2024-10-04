@@ -19,7 +19,6 @@ function AddModal() {
   const visible = useSelector((state) => state.modal.visible);
   const [newName, setNewName] = useState('');
   const inputRef = useRef(null);
-  const notify = () => toast(`${t('notify.add')}`);
 
   useEffect(() => {
     if (visible && inputRef.current) {
@@ -31,7 +30,6 @@ function AddModal() {
     const newId = randomKey();
     const newChannel = { name: newName, id: newId, removable: true };    
     dispatch(addChannel(newChannel));
-    notify();
     dispatch(hideModal());
     setNewName('');
   };
@@ -78,7 +76,6 @@ function AddModal() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer/>
     </div>
   );
 }
