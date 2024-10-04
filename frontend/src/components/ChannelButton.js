@@ -37,14 +37,15 @@ const ChannelButton = ({ id, name, removable }) => {
             className={`w-100 rounded-0 text-start text-truncate ${buttonClass}`}
             onClick={handleClick}
           >
-            #{name}
+            <span className="me-1">#</span>
+            {name}
           </button>
           {removable && <ChannelMenu handleDeleteClick={handleDeleteClick} handleRenameClick={handleRenameClick} buttonClass={buttonClass}/>}
         </div>
       </li>
 
       {type === 'delete' && <DeleteModal id={id} />}
-      {type === 'rename' && <RenameModal id={id} />}
+      {type === 'rename' && <RenameModal id={id} name={name}/>}
     </>
   );
 };

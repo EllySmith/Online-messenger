@@ -26,6 +26,7 @@ export const ru = {
           no: "Нет",
           renameHeader: "Переименовать канал:",
           renamePlaceholder: "Имя канала",
+          invalidName: "От 3 до 20 символов",
           rename: "Переименовать",
           cancel: "Отменить",
           addHeader: "Добавить канал:",

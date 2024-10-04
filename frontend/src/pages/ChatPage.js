@@ -43,6 +43,7 @@ function ChatPage() {
   useEffect(() => {
     dispatch(fetchChannels());
     dispatch(fetchMessages());
+    dispatch(changeCurrentChannel('1'));
   }, [dispatch]);
 
   useEffect(() => {

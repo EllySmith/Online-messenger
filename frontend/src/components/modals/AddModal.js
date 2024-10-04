@@ -18,21 +18,28 @@ function AddModal() {
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const [newName, setNewName] = useState('');
+  const [invalidName, setInvalidName] = useState(false);
   const inputRef = useRef(null);
+  const notify = () => toast(`${t('notify.add')}`);
 
   useEffect(() => {
     if (visible && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [visible]);
+  }, [visible, invalidName]);
 
   const handleAddChannel = async () => {
-    const newId = randomKey();
+    if (newName.length < 4 || newName.length > 20) {
+      setInvalidName(true);
+      return; 
+  }
+  setInvalidName(false);
+  const newId = randomKey();
     const newChannel = { name: newName, id: newId, removable: true };    
     dispatch(addChannel(newChannel));
-    dispatch(hideModal());
     setNewName('');
-  };
+    dispatch(hideModal());
+    };
 
   const hide = () => {
     dispatch(hideModal());
@@ -52,10 +59,9 @@ function AddModal() {
           <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <label class="visually-hidden" for="name">Имя канала</label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
             placeholder={t('modals.renamePlaceholder')}
@@ -64,8 +70,9 @@ function AddModal() {
             required
           />
           <label className="visually-hidden" htmlFor="name">
-              {t('modals.renamePlaceholder')}
+              {t('modals.addPlaceholder')}
             </label>
+            {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
@@ -76,6 +83,7 @@ function AddModal() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer />
     </div>
   );
 }
