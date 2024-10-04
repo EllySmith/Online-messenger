@@ -43,7 +43,7 @@ function ChatPage() {
   useEffect(() => {
     dispatch(fetchChannels());
     dispatch(fetchMessages());
-  }, [dispatch, messages]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (messageListRef.current) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "../../store/modalSlice";
@@ -18,7 +18,14 @@ function AddModal() {
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const [newName, setNewName] = useState('');
+  const inputRef = useRef(null);
   const notify = () => toast(`${t('notify.add')}`);
+
+  useEffect(() => {
+    if (visible && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [visible]);
 
   const handleAddChannel = async () => {
     const newId = randomKey();
@@ -47,6 +54,7 @@ function AddModal() {
           <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        <label class="visually-hidden" for="name">Имя канала</label>
           <input
             type="text"
             className="form-control"
@@ -55,7 +63,11 @@ function AddModal() {
             placeholder={t('modals.renamePlaceholder')}
             aria-label={t('modals.renamePlaceholder')}
             onKeyDown={handleKeyDown}
+            required
           />
+          <label className="visually-hidden" htmlFor="name">
+              {t('modals.renamePlaceholder')}
+            </label>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
