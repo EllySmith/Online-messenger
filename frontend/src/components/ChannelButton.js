@@ -4,25 +4,24 @@ import { changeCurrentChannel } from '../store/channelsSlice';
 import DeleteModal from './modals/DeleteModal';
 import RenameModal from './modals/RenameModal';
 import ChannelMenu from './ChannelMenu';
-import { changeModalType, showModal } from '../store/modalSlice';
+import { showModal } from '../store/modalSlice';
 
 
 const ChannelButton = ({ id, name, removable }) => {
   const dispatch = useDispatch();
   const type = useSelector((state) => state.modal.type);
+  console.log('channel name', name, 'channel id', id);
 
   const handleClick = () => {
     dispatch(changeCurrentChannel(id));
   };
 
   const handleRenameClick = () => {
-    dispatch(changeModalType('rename'));
-    dispatch(showModal());
+    dispatch(showModal({ type: 'rename', channelId: id }));
   };
-
+  
   const handleDeleteClick = () => {
-    dispatch(changeModalType('delete'));
-    dispatch(showModal());
+    dispatch(showModal({ type: 'delete', channelId: id }));
   };
 
   const currentChannelId = useSelector(state => state.channels.currentChannelId);

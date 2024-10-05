@@ -1,33 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-     type: 'add',
-     visible: false,
-     newChannel: {
-     newChannelId: null,
-     newChannelName: '',
-     newChannelRemovable: true
-     }
-   };
 
-   const modalSlice = createSlice({
-     name: 'modal',
-     initialState,
-     reducers: {
-       showModal: (state) => {
-         state.visible = true;
-       },
-       hideModal: (state) => {
-         state.visible = false;
-       },
-       changeModalType: (state, action) => {
-          state.type = action.payload;
-       },
-       formPatch: (state, action) => {
-         state.newChannel.newChannelName = action.payload.name;
-       }
-     }
-   });
-   
-   export const { showModal, hideModal, formNewChannel, formPatch, changeModalType } = modalSlice.actions;
-   export const modalReducer = modalSlice.reducer;
+const initialState = {
+  visible: false,
+  type: null, 
+  channelId: null, 
+};
+
+const modalSlice = createSlice({
+  name: 'modal',
+  initialState,
+  reducers: {
+    showModal: (state, action) => {
+      state.visible = true;
+      state.type = action.payload.type;
+      state.channelId = action.payload.channelId; 
+    },
+    hideModal: (state) => {
+      state.visible = false;
+      state.type = null;
+      state.channelId = null; 
+    },
+    changeModalType: (state, action) => {
+      state.type = action.payload;
+    },
+  },
+});
+
+export const { showModal, hideModal, changeModalType } = modalSlice.actions;
+export default modalSlice.reducer;

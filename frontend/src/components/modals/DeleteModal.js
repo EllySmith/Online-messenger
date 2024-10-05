@@ -4,20 +4,21 @@ import { hideModal } from '../../store/modalSlice'
 import { deleteChannel } from '../../store/channelsSlice'
 import { Modal, Button } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import { ToastContainer, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.minimal.css";
+import { toast } from 'react-toastify'
 
 
 function DeleteModal({id}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
+  const channelId = useSelector((state) => state.modal.channelId);
   const notify = () => toast(`${t('notify.delete')}`);
   const handleDelete = () => {
-    dispatch(deleteChannel(id));
+    dispatch(deleteChannel(channelId));
     notify();
     dispatch(hideModal());
-  }
+  };
+
   const hide = () => {
     dispatch(hideModal());
   }
@@ -35,7 +36,6 @@ function DeleteModal({id}) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer/>
       </div>
   )
 }

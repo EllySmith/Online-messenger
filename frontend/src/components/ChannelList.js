@@ -4,6 +4,7 @@ import ChannelButton from './ChannelButton';
 
 const ChannelList = ({ onClick }) => {
   const channels = useSelector(state => state.channels.channels);
+  console.log(channels)
 
   return (
     <div>        

@@ -5,9 +5,8 @@ import { hideModal } from "../../store/modalSlice";
 import { addChannel } from "../../store/channelsSlice";
 import { randomKey } from "../../utils/different";
 import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
 import leoProfanity from 'leo-profanity';
+import { toast } from 'react-toastify';
 
 leoProfanity.loadDictionary('en');
 leoProfanity.loadDictionary('ru');
@@ -85,7 +84,6 @@ function AddModal() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer />
     </div>
   );
 }
