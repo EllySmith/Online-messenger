@@ -70,7 +70,7 @@ function AddModal() {
             required
           />
           <label className="visually-hidden" htmlFor="name">
-              {t('modals.addPlaceholder')}
+              {t('modals.addPlaceHolder')}
             </label>
             {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>

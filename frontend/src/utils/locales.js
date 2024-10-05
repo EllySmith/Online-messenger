@@ -30,7 +30,7 @@ export const ru = {
           rename: "Переименовать",
           cancel: "Отменить",
           addHeader: "Добавить канал:",
-          addPlaceHolder: "Введите имя",
+          addPlaceHolder: "Имя канала",
           quit: "Отменить",
           add: "Отправить"
      },
