@@ -29,6 +29,7 @@ function AddModal() {
   }, [visible, invalidName]);
 
   const handleAddChannel = async () => {
+    console.log('add handled in component');
     if (newName.length < 4 || newName.length > 20) {
       setInvalidName(true);
       return; 
@@ -39,6 +40,7 @@ function AddModal() {
     dispatch(addChannel(newChannel));
     setNewName('');
     dispatch(hideModal());
+    notify();
     };
 
   const hide = () => {

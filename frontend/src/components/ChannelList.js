@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import ChannelButton from './ChannelButton'; 
 
 const ChannelList = ({ onClick }) => {
-  const currentChannelId = useSelector(state => state.channels.currentChannelId)
   const channels = useSelector(state => state.channels.channels);
 
   return (

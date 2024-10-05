@@ -57,6 +57,7 @@ export const addChannel = createAsyncThunk(
       const response = await axios.post(apiRoutes.channelsPath(), channelData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log('add handled in store');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
