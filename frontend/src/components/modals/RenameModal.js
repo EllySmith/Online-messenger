@@ -18,7 +18,7 @@ function RenameModal({id}) {
     return channel ? channel.name : 'unknown';
   });
 
- const [newName, setName] = useState(channelName);
+ const [newName, setName] = useState('');
  const [invalidName, setInvalidName] = useState(false);
  const notify = () => toast(`${t('notify.rename')}`);
 
