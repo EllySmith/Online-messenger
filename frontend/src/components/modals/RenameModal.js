@@ -62,7 +62,7 @@ const handleKeyDown = (e) => {
                   onKeyDown={handleKeyDown}
                 />
                 <label className="visually-hidden" htmlFor="name">
-                Переименовать
+                Имя канала
             </label>
                 {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>
@@ -70,9 +70,12 @@ const handleKeyDown = (e) => {
           <Button variant="secondary" onClick={hide}>
           {t('modals.quit')}          
           </Button>
-          <Button variant="primary" onClick={() => handleRename()}>
+          <Button variant="primary" id="submit" onClick={() => handleRename()}>
           {t('modals.rename')}
           </Button>
+          <label className="visually-hidden" htmlFor="submit">
+                Переименовать
+            </label>
         </Modal.Footer>
       </Modal>
     </div>
