@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "../../store/modalSlice";
-import { addChannel } from "../../store/channelsSlice";
+import { addChannel, fetchChannels } from "../../store/channelsSlice";
 import { randomKey } from "../../utils/different";
 import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
@@ -36,6 +36,7 @@ function AddModal() {
     dispatch(addChannel(newChannel));
     setNewName('');
     dispatch(hideModal());
+    dispatch(fetchChannels());
     notify();
     };
 

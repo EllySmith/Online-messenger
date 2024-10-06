@@ -12,7 +12,7 @@ const MessageBox = ({messageListRef}) => {
 
   useEffect(() => {
     dispatch(fetchMessages());
-  }, [dispatch, messages, currentChannelId]);
+  }, [dispatch, currentChannelId]);
 
   return (
      <div id="messages-box" className="chat-messages overflow-auto px-5 flex-grow-1">
