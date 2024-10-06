@@ -6,24 +6,27 @@ function ChannelMenu({handleRenameClick, handleDeleteClick, buttonClass}) {
   return (
      (
           <>
-          <span className="visually-hidden">Управление каналом</span>
             <button
               type="button"
+              id="menu"
               className={`flex-grow-0 dropdown-toggle dropdown-toggle-split ${buttonClass}`}
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
+              <label className="visually-hidden" htmlFor='menu'>Управление каналом</label>
             </button>
             <ul className="dropdown-menu">
               <li>
-                <button className="dropdown-item" onClick={handleRenameClick}>
+                <button className="dropdown-item" id='rename' onClick={handleRenameClick}>
                 {t('modals.rename')}
                 </button>
+                <label className="visually-hidden" htmlFor='rename'>Переименовать</label>
               </li>
               <li>
-                <button className="dropdown-item text-danger" onClick={handleDeleteClick}>
+                <button className="dropdown-item text-danger" id='delete' onClick={handleDeleteClick}>
                 {t('modals.delete')}
                 </button>
+                <label className="visually-hidden" htmlFor='delete'>Удалить</label>
               </li>
             </ul>
           </>
