@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {deleteChannel, changeChannelName, addChannel } from './store/channelsSlice';
+import {deleteChannel, changeChannelName, addChannelAction } from './store/channelsSlice';
 import { addMessage,  } from './store/messagesSlice';
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
@@ -45,7 +45,7 @@ function App() {
         });
 
         socket.on('newChannel', (channel) => {
-          dispatch(addChannel(channel));
+          dispatch(addChannelAction(channel));
         });
       };
 

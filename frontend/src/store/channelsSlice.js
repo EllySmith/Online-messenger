@@ -141,10 +141,18 @@ const channelsSlice = createSlice({
         state.loading = false;
         state.error = action.payload; 
       })
+      .addCase(addChannel.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(addChannel.fulfilled, (state, action) => {
         state.loading = false;
-        state.channels.push(action.payload); 
+        state.channels.push(action.payload);
         state.currentChannelId = action.payload.id; 
+      })
+      .addCase(addChannel.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
   },
 });

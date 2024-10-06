@@ -23,13 +23,13 @@ function ChatPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messages = useSelector(state => state.messages.messages);
-  const channels = useSelector(state => state.channels.channels);
+  const currentChannelId = useSelector(state => state.channels.currentChannelId); 
   const modal = useSelector(state => state.modal);
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
   LeoProfanity.loadDictionary(['en', 'ru', 'it']);
   LeoProfanity.remove('boob');
-  LeoProfanity.add(['boobs']);
+  LeoProfanity.add('boobs');
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
@@ -46,18 +46,11 @@ function ChatPage() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchChannels());
-  }, [dispatch, channels]);
-
-  useEffect(() => {
     if (messageListRef.current) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
     }
   }, [messages]);
 
-
-  const currentChannelId = useSelector(state => state.channels.currentChannelId);
-  const filteredMessages = messages.filter(message => message.channelId === currentChannelId);
   const channelName = useSelector((state) => {
     const channel = state.channels.channels.find(c => c.id === currentChannelId);
     return channel ? channel.name : 'unknown';
@@ -69,7 +62,7 @@ useEffect(() => {
   if (!modalVisible) {
     messageInputRef.current.focus();
   }
-}, [filteredMessages, modalVisible]);
+}, [modalVisible]);
 
   return (
       <div className='h-100'>
@@ -85,9 +78,8 @@ useEffect(() => {
                   </div>
   
                 <div className="col p-0 d-flex flex-column h-100">
-                  <MessageBoxHeader filteredMessages={filteredMessages} channelName={channelName} />
-  
-                  <MessageBox filteredMessages={filteredMessages} messageListRef={messageListRef} />
+                  <MessageBoxHeader channelName={channelName} />
+                  <MessageBox messageListRef={messageListRef} />
   
                   <div className="mt-auto px-5 py-3">
                       <Input

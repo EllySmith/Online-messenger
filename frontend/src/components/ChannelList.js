@@ -1,9 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchChannels } from '../store/channelsSlice';
 import ChannelButton from './ChannelButton'; 
 
 const ChannelList = ({ onClick }) => {
   const channels = useSelector(state => state.channels.channels);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchChannels());
+  }, [dispatch, channels]);
 
   return (
     <div>        
