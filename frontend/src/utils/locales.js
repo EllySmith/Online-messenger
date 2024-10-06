@@ -22,8 +22,7 @@ export const ru = {
      modals: {
           delete: "Удалить",
           deleteHeader: "Удалить канал?",
-          yes: "Да",
-          no: "Нет",
+          deleteBody: "Уверены?",
           renameHeader: "Переименовать канал:",
           renameLabel: "Имя канала",
           invalidName: "От 3 до 20 символов",

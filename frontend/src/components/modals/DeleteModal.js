@@ -27,11 +27,14 @@ function DeleteModal({id}) {
         <Modal.Header closeButton>
           <Modal.Title>{t('modals.deleteHeader')}</Modal.Title>
         </Modal.Header>
+        <Modal.Body>
+          {t('modals.deleteBody')}
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
           {t('modals.cancel')}
           </Button>
-          <Button variant="primary" onClick={handleDelete}>
+          <Button variant="primary" className='btn-danger' onClick={handleDelete}>
           {t('modals.delete')}
           </Button>
         </Modal.Footer>
