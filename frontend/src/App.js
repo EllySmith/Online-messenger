@@ -1,9 +1,9 @@
 import './App.css';
 import io from 'socket.io-client';
-import React, { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {deleteChannel, changeChannelName } from './store/channelsSlice';
+import {deleteChannel, changeChannelName, addChannel } from './store/channelsSlice';
 import { addMessage,  } from './store/messagesSlice';
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
@@ -23,32 +23,41 @@ const rollbarConfig = {
   
 function App() {
   const dispatch = useDispatch();
+  const socketInitialized = useRef(false);
 
   useEffect(() => {
     if (!socket) {
       socket = io();
     }
 
-    const setupSocketListeners = () => {
-      socket.on('newMessage', (message) => {
-        dispatch(addMessage(message));
-      });
+    if (!socketInitialized.current) {  
+      const setupSocketListeners = () => {
+        socket.on('newMessage', (message) => {
+          dispatch(addMessage(message));
+        });
 
-      socket.on('channelDeleted', (channelId) => {
-        dispatch(deleteChannel(channelId));
-      });
+        socket.on('channelDeleted', (channelId) => {
+          dispatch(deleteChannel(channelId));
+        });
 
-      socket.on('channelUpdated', (updatedChannel) => {
-        dispatch(changeChannelName(updatedChannel));
-      });
-    };
+        socket.on('channelUpdated', (updatedChannel) => {
+          dispatch(changeChannelName(updatedChannel));
+        });
 
-    setupSocketListeners();
+        socket.on('newChannel', (channel) => {
+          dispatch(addChannel(channel));
+        });
+      };
+
+      setupSocketListeners();
+      socketInitialized.current = true;
+    }
 
     return () => {
       socket.off('newMessage');
       socket.off('channelDeleted');
       socket.off('channelUpdated');
+      socket.off('newChannel');
     };
   }, [dispatch]);
     

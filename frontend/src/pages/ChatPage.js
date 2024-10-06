@@ -23,6 +23,7 @@ function ChatPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messages = useSelector(state => state.messages.messages);
+  const channels = useSelector(state => state.channels.channels);
   const modal = useSelector(state => state.modal);
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
@@ -43,6 +44,10 @@ function ChatPage() {
     dispatch(fetchMessages());
     dispatch(changeCurrentChannel('1'));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchChannels());
+  }, [dispatch, channels]);
 
   useEffect(() => {
     if (messageListRef.current) {
