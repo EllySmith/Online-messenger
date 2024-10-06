@@ -29,10 +29,10 @@ function DeleteModal({id}) {
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-          {t('modals.no')}
+          {t('modals.cancel')}
           </Button>
           <Button variant="primary" onClick={handleDelete}>
-          {t('modals.yes')}
+          {t('modals.delete')}
           </Button>
         </Modal.Footer>
       </Modal>
