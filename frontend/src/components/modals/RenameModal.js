@@ -62,7 +62,7 @@ const handleKeyDown = (e) => {
                   onKeyDown={handleKeyDown}
                 />
                 <label className="visually-hidden" htmlFor="name">
-              {t('modals.renameLabel')}
+                Переименовать
             </label>
                 {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>
