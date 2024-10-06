@@ -61,9 +61,7 @@ const handleKeyDown = (e) => {
                   className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
                   onKeyDown={handleKeyDown}
                 />
-                <label className="visually-hidden" htmlFor="newname">
-                Имя канала
-            </label>
+                <label htmlFor="newname" className="visually-hidden">{t('modals.renameLabel')}</label>
                 {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>
         <Modal.Footer>
@@ -73,9 +71,6 @@ const handleKeyDown = (e) => {
           <Button variant="primary" id="submit" onClick={() => handleRename()}>
           {t('modals.rename')}
           </Button>
-          <label className="visually-hidden" htmlFor="submit">
-                Переименовать
-            </label>
         </Modal.Footer>
       </Modal>
     </div>
