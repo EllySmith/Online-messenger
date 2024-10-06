@@ -18,7 +18,7 @@ function RenameModal({id}) {
     return channel ? channel.name : 'unknown';
   });
 
- const [newName, setName] = useState('');
+ const [newName, setName] = useState(channelName);  
  const [invalidName, setInvalidName] = useState(false);
  const notify = () => toast(`${t('notify.rename')}`);
 
@@ -54,14 +54,14 @@ const handleKeyDown = (e) => {
         <Modal.Body>
         <input
                   type="text"
-                  id="name"
+                  id="newname"
                   value={newName}
                   onChange={(e) => {
                     setInvalidName(false); setName(leoProfanity.clean(e.target.value))}}
                   className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
                   onKeyDown={handleKeyDown}
                 />
-                <label className="visually-hidden" htmlFor="name">
+                <label className="visually-hidden" htmlFor="newname">
                 Имя канала
             </label>
                 {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
