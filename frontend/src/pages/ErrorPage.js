@@ -1,9 +1,16 @@
+import { useTranslation } from 'react-i18next';
 
-const ErrorPage = (index) => (
-     <div className="text-center">
-     <h3>Страница не найдена</h3>
-     <p>Но вы можете перейти на <a href = '/'>главную страницу.</a></p>
-     </div>
-);
+const ErrorPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="text-center">
+      <h3>{t('pagenotfound.notfound')}</h3>
+      <p>
+        {t('pagenotfound.but')} <a href="/">{t('pagenotfound.mainpage')}</a>.
+      </p>
+    </div>
+  );
+};
 
 export default ErrorPage;

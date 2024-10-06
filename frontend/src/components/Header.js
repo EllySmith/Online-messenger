@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+
 const Header = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation(); 
@@ -14,7 +15,7 @@ const Header = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem('i18nextLng', lng); 
+    localStorage.setItem('i18nextLng', lng);
   };
 
   return (
@@ -28,9 +29,16 @@ const Header = () => {
               {t('header.quit')}
             </button>
           )}
-          <button className="btn btn-light eng" onClick={() => changeLanguage('eng')}></button>
-          <button className="btn btn-light mx-2 it" onClick={() => changeLanguage('it')}></button>
-          <button className="btn btn-light ru" onClick={() => changeLanguage('ru')}></button>
+<button className="btn btn-light eng" onClick={() => {
+    changeLanguage('eng');
+}}></button>
+<button className="btn btn-light mx-2 it" onClick={() => {
+    changeLanguage('it');
+}}>
+</button>          <button className="btn btn-light ru" onClick={() => {
+    changeLanguage('ru');
+}}>
+</button>
         </div>
       </div>
     </nav>

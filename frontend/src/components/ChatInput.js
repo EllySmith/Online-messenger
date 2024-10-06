@@ -4,11 +4,7 @@ import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
 import { randomKey } from "../utils/different";
 import { sendMessage } from "../store/messagesSlice";
-import { ToastContainer, toast } from 'react-toastify';
-
-leoProfanity.loadDictionary('en');
-leoProfanity.loadDictionary('ru');
-leoProfanity.add('boobs');
+import { toast } from 'react-toastify';
 
 
 const Input = React.forwardRef(({ currentChannelId }, ref) => {
@@ -17,7 +13,7 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
     const [messageInput, setMessageInput] = useState('');
     const [sendingMessage, setSendingMessage] = useState(false);
     const [username, setUsername] = useState(localStorage.getItem('username'));
-    const notify = () => toast(`${t('notify.noconnection')}`);
+    const notify = () => toast(`${t('errors.noconnection')}`);
 
     const handleSendMessage = async () => {
       setUsername(localStorage.getItem('username'))
@@ -59,12 +55,14 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
          ref={ref}
          className='border-0 p-0 ps-2 form-control'
        />
+       <label className="visually-hidden" htmlFor="name">
+              {t('modals.messagePalceholder')}
+            </label>
        <button type="submit" className="btn btn-group-vertical">
        {t('chat.sendMessage')} 
        </button>
      </div>
      </form>
-     <ToastContainer />
      </div>
    );
  });

@@ -10,7 +10,6 @@ import { showModal } from '../store/modalSlice';
 const ChannelButton = ({ id, name, removable }) => {
   const dispatch = useDispatch();
   const type = useSelector((state) => state.modal.type);
-  console.log('channel name', name, 'channel id', id);
 
   const handleClick = () => {
     dispatch(changeCurrentChannel(id));

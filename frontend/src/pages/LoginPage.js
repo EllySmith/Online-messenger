@@ -26,7 +26,6 @@ const LoginPage = (index) => {
           navigate('/');
           } catch (error) {
             setError(t('errors.wrongPassword'));
-            console.log('error received');
           }
         };
 

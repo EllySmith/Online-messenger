@@ -8,7 +8,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
-// Use createRoot for React 18
 const container = document.getElementById('root');
 const root = createRoot(container);
 

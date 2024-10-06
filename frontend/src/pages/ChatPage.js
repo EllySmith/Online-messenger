@@ -11,13 +11,9 @@ import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
-import leoProfanity from 'leo-profanity';
 import MessageBoxHeader from '../components/MessageBoxHeader';
+import LeoProfanity from 'leo-profanity';
 
-leoProfanity.loadDictionary('en');
-leoProfanity.loadDictionary('ru');
-leoProfanity.add('boobs');
 
 
 function ChatPage() {
@@ -26,6 +22,8 @@ function ChatPage() {
   const messages = useSelector(state => state.messages.messages);
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
+  LeoProfanity.loadDictionary(['en', 'ru', 'it']);
+  LeoProfanity.add(['boobs']);
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
@@ -35,6 +33,7 @@ function ChatPage() {
   }, [navigate]);
   
   useEffect(() => {
+
     dispatch(fetchChannels());
     dispatch(fetchMessages());
     dispatch(changeCurrentChannel('1'));

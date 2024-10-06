@@ -7,21 +7,23 @@ import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
 import { toast } from 'react-toastify';
 
-leoProfanity.loadDictionary('en');
-leoProfanity.loadDictionary('ru');
 
-function RenameModal({id, name}) {
+function RenameModal({id}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
   const channelId = useSelector((state) => state.modal.channelId);
+  const channelName = useSelector((state) => {
+    const channel = state.channels.channels.find(c => c.id === channelId);
+    return channel ? channel.name : 'unknown';
+  });
 
- const [newName, setName] = useState('');
+ const [newName, setName] = useState(channelName);
  const [invalidName, setInvalidName] = useState(false);
  const notify = () => toast(`${t('notify.rename')}`);
 
  const handleRename = async () => {
-  if (newName.length < 4 || newName.length > 20) {
+  if (newName.length < 3 || newName.length > 20) {
     setInvalidName(true);
     return;
   }
@@ -35,6 +37,7 @@ function RenameModal({id, name}) {
 const hide = () => {
   dispatch(hideModal());
 }
+
 const handleKeyDown = (e) => {
   if (e.key === 'Enter') { 
     e.preventDefault(); 
@@ -51,6 +54,7 @@ const handleKeyDown = (e) => {
         <Modal.Body>
         <input
                   type="text"
+                  id="name"
                   value={newName}
                   onChange={(e) => {
                     setInvalidName(false); setName(leoProfanity.clean(e.target.value))}}
@@ -58,7 +62,7 @@ const handleKeyDown = (e) => {
                   onKeyDown={handleKeyDown}
                 />
                 <label className="visually-hidden" htmlFor="name">
-              {t('modals.renamePlaceholder')}
+              {t('modals.renameLabel')}
             </label>
                 {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>

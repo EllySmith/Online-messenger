@@ -6,6 +6,7 @@ function ChannelMenu({handleRenameClick, handleDeleteClick, buttonClass}) {
   return (
      (
           <>
+          <span className="visually-hidden">Управление каналом</span>
             <button
               type="button"
               className={`flex-grow-0 dropdown-toggle dropdown-toggle-split ${buttonClass}`}

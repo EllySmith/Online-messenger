@@ -8,9 +8,7 @@ import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
 import { toast } from 'react-toastify';
 
-leoProfanity.loadDictionary('en');
-leoProfanity.loadDictionary('ru');
-leoProfanity.add('boobs');
+
 
 function AddModal() {
   const { t } = useTranslation();
@@ -28,8 +26,7 @@ function AddModal() {
   }, [visible, invalidName]);
 
   const handleAddChannel = async () => {
-    console.log('add handled in component');
-    if (newName.length < 4 || newName.length > 20) {
+    if (newName.length < 3 || newName.length > 20) {
       setInvalidName(true);
       return; 
   }
@@ -62,6 +59,7 @@ function AddModal() {
         <Modal.Body>
           <input
             type="text"
+            id="name"
             className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
