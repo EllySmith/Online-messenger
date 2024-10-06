@@ -23,6 +23,7 @@ function ChatPage() {
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
   LeoProfanity.loadDictionary(['en', 'ru', 'it']);
+  LeoProfanity.remove('boob');
   LeoProfanity.add(['boobs']);
 
   useEffect(() => {
