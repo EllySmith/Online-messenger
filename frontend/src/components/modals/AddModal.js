@@ -63,13 +63,12 @@ function AddModal() {
             className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
-            placeholder={t('modals.renamePlaceholder')}
-            aria-label={t('modals.renamePlaceholder')}
+            aria-label={t('modals.addPlaceHolder')}
             onKeyDown={handleKeyDown}
             required
           />
           <label className="visually-hidden" htmlFor="name">
-              {t('modals.addPlaceHolder')}
+              Имя канала
             </label>
             {invalidName && <div className="invalid-feedback">{t('modals.invalidName')}</div>}
         </Modal.Body>

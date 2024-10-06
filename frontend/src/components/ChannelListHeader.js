@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import AddModal from './modals/AddModal';
+import { useDispatch } from 'react-redux';
 import { showModal } from '../store/modalSlice';
 import { useTranslation } from 'react-i18next';
 
@@ -9,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 function ChannelListHeader() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const type = useSelector((state) => state.modal.type);
 
   const handleAddClick = () => {
     dispatch(showModal({ type: 'add'}));
@@ -26,8 +24,6 @@ function ChannelListHeader() {
     <b>+</b>
   </button>
   </div>
-
-  {type === 'add' && <AddModal />}
 </div>
 
   );

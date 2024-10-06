@@ -1,15 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCurrentChannel } from '../store/channelsSlice';
-import DeleteModal from './modals/DeleteModal';
-import RenameModal from './modals/RenameModal';
 import ChannelMenu from './ChannelMenu';
 import { showModal } from '../store/modalSlice';
 
 
 const ChannelButton = ({ id, name, removable }) => {
   const dispatch = useDispatch();
-  const type = useSelector((state) => state.modal.type);
 
   const handleClick = () => {
     dispatch(changeCurrentChannel(id));
@@ -41,9 +38,6 @@ const ChannelButton = ({ id, name, removable }) => {
           {removable && <ChannelMenu handleDeleteClick={handleDeleteClick} handleRenameClick={handleRenameClick} buttonClass={buttonClass}/>}
         </div>
       </li>
-
-      {type === 'delete' && <DeleteModal id={id} />}
-      {type === 'rename' && <RenameModal id={id} name={name}/>}
     </>
   );
 };

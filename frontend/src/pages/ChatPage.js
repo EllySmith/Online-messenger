@@ -5,6 +5,8 @@ import ChannelList from '../components/ChannelList';
 import Input from '../components/ChatInput';
 import Header from '../components/Header';
 import '../App.css';
+import DeleteModal from '../components/modals/DeleteModal';
+import RenameModal from '../components/modals/RenameModal';
 import { fetchChannels, changeCurrentChannel } from '../store/channelsSlice';
 import { fetchMessages } from '../store/messagesSlice';
 import MessageBox from '../components/MessageBox';
@@ -13,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import MessageBoxHeader from '../components/MessageBoxHeader';
 import LeoProfanity from 'leo-profanity';
+import AddModal from '../components/modals/AddModal';
 
 
 
@@ -20,6 +23,7 @@ function ChatPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messages = useSelector(state => state.messages.messages);
+  const modal = useSelector(state => state.modal);
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
   LeoProfanity.loadDictionary(['en', 'ru', 'it']);
@@ -91,6 +95,10 @@ useEffect(() => {
             </div>
             </div>
         </div>
+        {modal.visible && modal.type === 'delete' && <DeleteModal id={modal.channelId} />}
+        {modal.visible && modal.type === 'rename' && <RenameModal id={modal.channelId} />}
+        {modal.visible && modal.type === 'add' && <AddModal />}
+        
         <ToastContainer />
       </div>
   );
