@@ -1,25 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { hideModal } from "../../store/modalSlice";
+import React, { useState, useRef, useEffect } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideModal } from '../../store/modalSlice';
 import {
   addChannel,
   changeCurrentChannel,
   fetchChannels,
-} from "../../store/channelsSlice";
-import { randomKey } from "../../utils/different";
-import { useTranslation } from "react-i18next";
-import leoProfanity from "leo-profanity";
-import { toast } from "react-toastify";
+} from '../../store/channelsSlice';
+import { randomKey } from '../../utils/different';
+import { useTranslation } from 'react-i18next';
+import leoProfanity from 'leo-profanity';
+import { toast } from 'react-toastify';
 
 function AddModal() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
-  const [newName, setNewName] = useState("");
+  const [newName, setNewName] = useState('');
   const [invalidName, setInvalidName] = useState(false);
   const inputRef = useRef(null);
-  const notify = () => toast(`${t("notify.add")}`);
+  const notify = () => toast(`${t('notify.add')}`);
 
   useEffect(() => {
     if (visible && inputRef.current) {
@@ -35,11 +35,11 @@ function AddModal() {
     setInvalidName(false);
     const newChannel = { name: newName, removable: true };
     const response = await dispatch(addChannel(newChannel));
-    if (response.meta.requestStatus === "fulfilled") {
+    if (response.meta.requestStatus === 'fulfilled') {
       const { id } = response.payload;
       dispatch(changeCurrentChannel(id));
     }
-    setNewName("");
+    setNewName('');
     dispatch(hideModal());
     dispatch(fetchChannels());
     notify();
@@ -50,7 +50,7 @@ function AddModal() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleAddChannel();
     }
@@ -60,16 +60,16 @@ function AddModal() {
     <div>
       <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>{t("modals.addHeader")}</Modal.Title>
+          <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
             type="text"
             id="name"
-            className={`form-control mb-2 ${invalidName ? "is-invalid" : ""}`}
+            className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
-            aria-label={t("modals.addPlaceHolder")}
+            aria-label={t('modals.addPlaceHolder')}
             onKeyDown={handleKeyDown}
             required
           />
@@ -77,15 +77,15 @@ function AddModal() {
             Имя канала
           </label>
           {invalidName && (
-            <div className="invalid-feedback">{t("modals.invalidName")}</div>
+            <div className="invalid-feedback">{t('modals.invalidName')}</div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-            {t("modals.quit")}
+            {t('modals.quit')}
           </Button>
           <Button variant="primary" onClick={handleAddChannel}>
-            {t("modals.add")}
+            {t('modals.add')}
           </Button>
         </Modal.Footer>
       </Modal>

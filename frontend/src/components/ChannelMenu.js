@@ -1,5 +1,5 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
             id="rename"
             onClick={handleRenameClick}
           >
-            {t("modals.rename")}
+            {t('modals.rename')}
           </button>
           <label className="visually-hidden" htmlFor="rename">
             Переименовать
@@ -35,7 +35,7 @@ function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
             id="delete"
             onClick={handleDeleteClick}
           >
-            {t("modals.delete")}
+            {t('modals.delete')}
           </button>
           <label className="visually-hidden" htmlFor="delete">
             Удалить

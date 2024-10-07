@@ -1,20 +1,20 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
   const logOut = () => {
-    localStorage.token = "";
-    localStorage.username = "";
-    navigate("/login");
+    localStorage.token = '';
+    localStorage.username = '';
+    navigate('/login');
   };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem("i18nextLng", lng);
+    localStorage.setItem('i18nextLng', lng);
   };
 
   return (
@@ -28,27 +28,27 @@ const Header = () => {
               type="button"
               className="btn btn-outline-primary"
               onClick={logOut}
-              style={{ marginRight: "1rem" }}
+              style={{ marginRight: '1rem' }}
             >
-              {t("header.quit")}
+              {t('header.quit')}
             </button>
           )}
           <button
             className="btn btn-light eng"
             onClick={() => {
-              changeLanguage("eng");
+              changeLanguage('eng');
             }}
           ></button>
           <button
             className="btn btn-light mx-2 it"
             onClick={() => {
-              changeLanguage("it");
+              changeLanguage('it');
             }}
-          ></button>{" "}
+          ></button>{' '}
           <button
             className="btn btn-light ru"
             onClick={() => {
-              changeLanguage("ru");
+              changeLanguage('ru');
             }}
           ></button>
         </div>

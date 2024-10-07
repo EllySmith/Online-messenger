@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Message from "./Message";
-import { fetchMessages } from "../store/messagesSlice";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Message from './Message';
+import { fetchMessages } from '../store/messagesSlice';
 
 const MessageBox = ({ messageListRef }) => {
   const messages = useSelector((state) => state.messages.messages);

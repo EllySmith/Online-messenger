@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeChannelName } from "../../store/channelsSlice";
-import { hideModal } from "../../store/modalSlice";
-import { Modal, Button } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
-import leoProfanity from "leo-profanity";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeChannelName } from '../../store/channelsSlice';
+import { hideModal } from '../../store/modalSlice';
+import { Modal, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import leoProfanity from 'leo-profanity';
+import { toast } from 'react-toastify';
 
 function RenameModal({ id }) {
   const { t } = useTranslation();
@@ -14,12 +14,12 @@ function RenameModal({ id }) {
   const channelId = useSelector((state) => state.modal.channelId);
   const channelName = useSelector((state) => {
     const channel = state.channels.channels.find((c) => c.id === channelId);
-    return channel ? channel.name : "unknown";
+    return channel ? channel.name : 'unknown';
   });
 
   const [newName, setName] = useState(channelName);
   const [invalidName, setInvalidName] = useState(false);
-  const notify = () => toast(`${t("notify.rename")}`);
+  const notify = () => toast(`${t('notify.rename')}`);
 
   const handleRename = async () => {
     if (newName.length < 3 || newName.length > 20) {
@@ -37,7 +37,7 @@ function RenameModal({ id }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleRename();
     }
@@ -47,7 +47,7 @@ function RenameModal({ id }) {
     <div>
       <Modal show={visible} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>{t("modals.renameHeader")}</Modal.Title>
+          <Modal.Title>{t('modals.renameHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
@@ -58,22 +58,22 @@ function RenameModal({ id }) {
               setInvalidName(false);
               setName(leoProfanity.clean(e.target.value));
             }}
-            className={`form-control mb-2 ${invalidName ? "is-invalid" : ""}`}
+            className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             onKeyDown={handleKeyDown}
           />
           <label htmlFor="newname" className="visually-hidden">
-            {t("modals.renameLabel")}
+            {t('modals.renameLabel')}
           </label>
           {invalidName && (
-            <div className="invalid-feedback">{t("modals.invalidName")}</div>
+            <div className="invalid-feedback">{t('modals.invalidName')}</div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={hide}>
-            {t("modals.quit")}
+            {t('modals.quit')}
           </Button>
           <Button variant="primary" id="submit" onClick={() => handleRename()}>
-            {t("modals.rename")}
+            {t('modals.rename')}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,29 +1,29 @@
-import "../App.css";
-import React, { useState } from "react";
-import axios from "axios";
-import { Formik, Form, Field } from "formik";
-import apiRoutes from "../routes.js";
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header.js";
-import LoginImage from "../images/LoginPage.jpg";
-import { auto } from "async";
-import { useTranslation } from "react-i18next";
+import '../App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Formik, Form, Field } from 'formik';
+import apiRoutes from '../routes.js';
+import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header.js';
+import LoginImage from '../images/LoginPage.jpg';
+import { auto } from 'async';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = (index) => {
   const { t } = useTranslation();
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (values) => {
     try {
       const { data } = await axios.post(apiRoutes.login(), values);
       const token = data.token;
-      localStorage.setItem("token", token);
-      localStorage.setItem("username", values.username);
-      navigate("/");
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', values.username);
+      navigate('/');
     } catch (error) {
-      setError(t("errors.wrongPassword"));
+      setError(t('errors.wrongPassword'));
     }
   };
 
@@ -39,17 +39,17 @@ const LoginPage = (index) => {
                   <img
                     src={LoginImage}
                     alt="Hexlet Chat"
-                    style={{ width: "100%", height: auto }}
+                    style={{ width: '100%', height: auto }}
                   />
                 </div>
                 <Formik
-                  initialValues={{ username: "", password: "" }}
+                  initialValues={{ username: '', password: '' }}
                   onSubmit={handleSubmit}
                 >
                   {() => (
                     <Form className="col-12 col-md-6 mt-3 mt-md-0">
                       <h1 className="text-center mb-4 p-0 me-5">
-                        {t("form.loginHeader")}
+                        {t('form.loginHeader')}
                       </h1>
                       <div className="form-floating mb-3 me-3">
                         <Field
@@ -57,9 +57,9 @@ const LoginPage = (index) => {
                           name="username"
                           className="form-control"
                           id="username"
-                          placeholder={t("form.yourname")}
+                          placeholder={t('form.yourname')}
                         />
-                        <label htmlFor="username">{t("form.yourname")}</label>
+                        <label htmlFor="username">{t('form.yourname')}</label>
                       </div>
                       <div className="form-floating mb-3 me-3">
                         <Field
@@ -67,9 +67,9 @@ const LoginPage = (index) => {
                           name="password"
                           className="form-control"
                           id="password"
-                          placeholder={t("form.password")}
+                          placeholder={t('form.password')}
                         />
-                        <label htmlFor="password">{t("form.password")}</label>
+                        <label htmlFor="password">{t('form.password')}</label>
                       </div>
                       <div className="text-center">
                         <button
@@ -77,7 +77,7 @@ const LoginPage = (index) => {
                           className="mb-3 btn btn-outline-primary"
                           aria-label="general"
                         >
-                          {t("form.enter")}
+                          {t('form.enter')}
                         </button>
                       </div>
                     </Form>
@@ -87,8 +87,8 @@ const LoginPage = (index) => {
               <div className="card-footer text-center pt-3">
                 <p>
                   {error && <div className="error-message">{error}</div>}
-                  {t("form.withoutAccount")}{" "}
-                  <a href="/signup">{t("form.register")}</a>
+                  {t('form.withoutAccount')}{' '}
+                  <a href="/signup">{t('form.register')}</a>
                 </p>
               </div>
             </div>

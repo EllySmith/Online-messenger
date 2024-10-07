@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import axios from "axios";
-import apiRoutes from "../routes";
-import { Formik, Form, Field } from "formik";
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import { useValidationSchema } from "../utils/validation";
-import { useTranslation } from "react-i18next";
-import RegImage from "../images/RegistrationPage.png";
+import React, { useState } from 'react';
+import axios from 'axios';
+import apiRoutes from '../routes';
+import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import { useValidationSchema } from '../utils/validation';
+import { useTranslation } from 'react-i18next';
+import RegImage from '../images/RegistrationPage.png';
 
-import "../App.css";
+import '../App.css';
 
 function Registration() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const validationSchema = useValidationSchema();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleSubmit = async (values, { setSubmitting }) => {
     const { username, password } = values;
@@ -25,14 +25,14 @@ function Registration() {
         password,
       });
       const token = response.data.token;
-      localStorage.setItem("token", token);
-      localStorage.setItem("username", username);
-      navigate("/");
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      navigate('/');
     } catch (err) {
       if (err.response && err.response.status === 409) {
-        setError(t("errors.userExists"));
+        setError(t('errors.userExists'));
       } else {
-        setError("Unknown error");
+        setError('Unknown error');
       }
     } finally {
       setSubmitting(false);
@@ -51,15 +51,15 @@ function Registration() {
                   <img
                     src={RegImage}
                     alt="Hexlet Chat"
-                    style={{ width: "100%" }}
+                    style={{ width: '100%' }}
                   />
                 </div>
                 <div className="col-12 col-md-6 mt-3 mt-md-0">
                   <Formik
                     initialValues={{
-                      username: "",
-                      password: "",
-                      confirmPassword: "",
+                      username: '',
+                      password: '',
+                      confirmPassword: '',
                     }}
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}
@@ -67,7 +67,7 @@ function Registration() {
                     {({ errors, touched, isSubmitting }) => (
                       <Form>
                         <h1 className="text-center mb-4">
-                          {t("form.registrationHeader")}
+                          {t('form.registrationHeader')}
                         </h1>
                         <div className="form-group">
                           <div className="form-floating mb-3">
@@ -77,13 +77,13 @@ function Registration() {
                               name="username"
                               className={`form-control ${
                                 errors.username && touched.username
-                                  ? "is-invalid"
-                                  : ""
+                                  ? 'is-invalid'
+                                  : ''
                               }`}
-                              placeholder={t("form.name")}
+                              placeholder={t('form.name')}
                             />
                             <label htmlFor="username" className="form-label">
-                              {t("form.name")}
+                              {t('form.name')}
                             </label>
                             {errors.username && touched.username && (
                               <div className="invalid-feedback">
@@ -98,13 +98,13 @@ function Registration() {
                               name="password"
                               className={`form-control ${
                                 errors.password && touched.password
-                                  ? "is-invalid"
-                                  : ""
+                                  ? 'is-invalid'
+                                  : ''
                               }`}
-                              placeholder={t("form.password")}
+                              placeholder={t('form.password')}
                             />
                             <label htmlFor="password" className="form-label">
-                              {t("form.password")}
+                              {t('form.password')}
                             </label>
                             {errors.password && touched.password && (
                               <div className="invalid-feedback">
@@ -120,16 +120,16 @@ function Registration() {
                               className={`form-control ${
                                 errors.confirmPassword &&
                                 touched.confirmPassword
-                                  ? "is-invalid"
-                                  : ""
+                                  ? 'is-invalid'
+                                  : ''
                               }`}
-                              placeholder={t("form.passwordCheck")}
+                              placeholder={t('form.passwordCheck')}
                             />
                             <label
                               htmlFor="confirmPassword"
                               className="form-label"
                             >
-                              {t("form.passwordCheck")}
+                              {t('form.passwordCheck')}
                             </label>
                             {errors.confirmPassword &&
                               touched.confirmPassword && (
@@ -146,7 +146,7 @@ function Registration() {
                             disabled={isSubmitting}
                             aria-label="general"
                           >
-                            {t("form.registration")}
+                            {t('form.registration')}
                           </button>
                         </div>
                         {error && (
@@ -161,7 +161,7 @@ function Registration() {
               </div>
               <div className="card-footer text-center">
                 <p>
-                  {t("form.withAccount")} <a href="/">{t("form.enter")}</a>.
+                  {t('form.withAccount')} <a href="/">{t('form.enter')}</a>.
                 </p>
               </div>
             </div>

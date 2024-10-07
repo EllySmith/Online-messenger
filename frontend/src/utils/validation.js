@@ -6,8 +6,8 @@ export const useValidationSchema = () => {
 
   return Yup.object().shape({
     username: Yup.string()
-      .required(t('errors.noName')) 
-      .min(3, t('errors.nameTooShort')) 
+      .required(t('errors.noName'))
+      .min(3, t('errors.nameTooShort'))
       .max(20, t('errors.nameTooLong')),
     password: Yup.string()
       .required(t('errors.noPassword'))

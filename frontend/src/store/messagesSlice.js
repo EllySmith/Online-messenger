@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import apiRoutes from "../routes";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import apiRoutes from '../routes';
 
 export const sendMessage = createAsyncThunk(
-  "chat/sendMessage",
+  'chat/sendMessage',
   async (messageData, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       const response = await axios.post(apiRoutes.messagesPath(), messageData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -20,12 +20,12 @@ export const sendMessage = createAsyncThunk(
 );
 
 export const fetchMessages = createAsyncThunk(
-  "chat/fetchMessages",
+  'chat/fetchMessages',
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       if (!token) {
-        throw new Error("Токен не найден");
+        throw new Error('Токен не найден');
       }
 
       const response = await axios.get(apiRoutes.messagesPath(), {
@@ -49,7 +49,7 @@ const initialState = {
 };
 
 const messagesSlice = createSlice({
-  name: "messages",
+  name: 'messages',
   initialState,
   reducers: {
     resetChatState: (state) => {

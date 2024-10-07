@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 function MessageBoxHeader({ channelName }) {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ function MessageBoxHeader({ channelName }) {
         <b>#{channelName}</b>
       </p>
       <span className="text-muted">
-        {filteredMessages.length} {t("chat.messages")}
+        {filteredMessages.length} {t('chat.messages')}
       </span>
     </div>
   );

@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import leoProfanity from "leo-profanity";
-import { randomKey } from "../utils/different";
-import { sendMessage } from "../store/messagesSlice";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import leoProfanity from 'leo-profanity';
+import { randomKey } from '../utils/different';
+import { sendMessage } from '../store/messagesSlice';
+import { toast } from 'react-toastify';
 
 const Input = React.forwardRef(({ currentChannelId }, ref) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [messageInput, setMessageInput] = useState("");
+  const [messageInput, setMessageInput] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
-  const [username, setUsername] = useState(localStorage.getItem("username"));
-  const notify = () => toast(`${t("errors.noconnection")}`);
+  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const notify = () => toast(`${t('errors.noconnection')}`);
 
   const handleSendMessage = async () => {
-    setUsername(localStorage.getItem("username"));
+    setUsername(localStorage.getItem('username'));
     if (messageInput.trim() && !sendingMessage) {
       setSendingMessage(true);
       try {
@@ -28,9 +28,9 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
             username: username,
           })
         ).unwrap();
-        setMessageInput("");
+        setMessageInput('');
       } catch (error) {
-        console.error("Failed to send message:", error);
+        console.error('Failed to send message:', error);
         notify();
       } finally {
         setSendingMessage(false);
@@ -39,7 +39,7 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSendMessage();
     }
@@ -56,7 +56,7 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
           <input
             name="body"
             aria-label="Новое сообщение"
-            placeholder={t("chat.messagePlaceholder")}
+            placeholder={t('chat.messagePlaceholder')}
             value={messageInput}
             onChange={(e) =>
               setMessageInput(leoProfanity.clean(e.target.value))
@@ -66,10 +66,10 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
             className="border-0 p-0 ps-2 form-control"
           />
           <label className="visually-hidden" htmlFor="name">
-            {t("modals.messagePalceholder")}
+            {t('modals.messagePalceholder')}
           </label>
           <button type="submit" className="btn btn-group-vertical">
-            {t("chat.sendMessage")}
+            {t('chat.sendMessage')}
           </button>
         </div>
       </form>

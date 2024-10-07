@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import apiRoutes from "../routes";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import apiRoutes from '../routes';
 
 export const fetchChannels = createAsyncThunk(
-  "chat/fetchChannels",
+  'chat/fetchChannels',
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) throw new Error("Токен не найден");
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('Токен не найден');
 
       const response = await axios.get(apiRoutes.channelsPath(), {
         headers: { Authorization: `Bearer ${token}` },
@@ -20,10 +20,10 @@ export const fetchChannels = createAsyncThunk(
 );
 
 export const deleteChannel = createAsyncThunk(
-  "chat/deleteChannel",
+  'chat/deleteChannel',
   async (channelId, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       await axios.delete(apiRoutes.channelPath(channelId), {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -35,10 +35,10 @@ export const deleteChannel = createAsyncThunk(
 );
 
 export const changeChannelName = createAsyncThunk(
-  "chat/changeChannelName",
+  'chat/changeChannelName',
   async ({ id, name }, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       const response = await axios.patch(
         apiRoutes.channelPath(id),
         { name },
@@ -54,10 +54,10 @@ export const changeChannelName = createAsyncThunk(
 );
 
 export const addChannel = createAsyncThunk(
-  "chat/addChannel",
+  'chat/addChannel',
   async (channelData, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       const response = await axios.post(apiRoutes.channelsPath(), channelData, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -78,13 +78,13 @@ const initialState = {
 };
 
 const channelsSlice = createSlice({
-  name: "chat",
+  name: 'chat',
   initialState,
   reducers: {
     resetChatState: (state) => {
       state.channels = [
-        { id: 1, name: "general", removable: false },
-        { id: 2, name: "random", removable: false },
+        { id: 1, name: 'general', removable: false },
+        { id: 2, name: 'random', removable: false },
       ];
       state.currentChannelId = 1;
       state.messages = [];
