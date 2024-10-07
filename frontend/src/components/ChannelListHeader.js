@@ -24,6 +24,6 @@ const ChannelListHeader = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ChannelListHeader;

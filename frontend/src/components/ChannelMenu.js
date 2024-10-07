@@ -6,7 +6,7 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
   return (
     <>
       <button
-        type="menu"
+        type="button"
         id="menu"
         className={`flex-grow-0 dropdown-toggle dropdown-toggle-split ${buttonClass}`}
         data-bs-toggle="dropdown"
@@ -18,6 +18,9 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
       </button>
       <ul className="dropdown-menu">
         <li>
+        <label className="visually-hidden" htmlFor="rename">
+            Переименовать
+          </label>
           <button
             type="button"
             className="dropdown-item"
@@ -26,11 +29,11 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
           >
             {t('modals.rename')}
           </button>
-          <label className="visually-hidden" htmlFor="rename">
-            Переименовать
-          </label>
         </li>
         <li>
+        <label className="visually-hidden" htmlFor="delete">
+            Удалить
+          </label>
           <button
             type="button"
             className="dropdown-item text-danger"
@@ -39,9 +42,6 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
           >
             {t('modals.delete')}
           </button>
-          <label className="visually-hidden" htmlFor="delete">
-            Удалить
-          </label>
         </li>
       </ul>
     </>

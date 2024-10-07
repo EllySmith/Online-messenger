@@ -16,14 +16,15 @@ const MessageBoxHeader = ({ channelName }) => {
       <p className="m-0">
         <b>
           #
-          {channelName}</b>
+          {channelName}
+          </b>
       </p>
       <span className="text-muted">
-        {filteredMessages.length} 
+        {filteredMessages.length}
         {t('chat.messages')}
       </span>
     </div>
   );
-}
+};
 
 export default MessageBoxHeader;

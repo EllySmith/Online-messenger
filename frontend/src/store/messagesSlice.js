@@ -52,48 +52,39 @@ const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    resetChatState: (state) => {
-      state.channels = [];
-      state.messages = [];
-      state.loading = false;
-      state.error = null;
-      state.socketConnected = false;
-    },
-    addMessage: (state, action) => {
-      return {
+    resetChatState: (state) => ({
+      channels: [],
+      messages: [],
+      loading: false,
+      error: null,
+      socketConnected: false,
+    }),
+    addMessage: (state, action) => ({
         ...state,
         messages: [...state.messages, action.payload],
-      };
+      }),
     },
-  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMessages.pending, (state) => {
-        return {
+      .addCase(fetchMessages.pending, (state) => ({
           ...state,
           loading: true,
           error: null,
-        };
-      })
-      .addCase(fetchMessages.fulfilled, (state, action) => {
-        return {
+      }))
+      .addCase(fetchMessages.fulfilled, (state, action) => ({
           ...state,
           loading: false,
           messages: action.payload,
-        };
-      })
-      .addCase(fetchMessages.rejected, (state, action) => {
-        return {
+      }))
+      .addCase(fetchMessages.rejected, (state, action) => ({
           ...state,
           loading: false,
           error: action.payload,
-        };
-      });
-    builder.addCase(sendMessage.fulfilled, (state, action) => {
-      return {
+      }))
+    builder.addCase(sendMessage.fulfilled, (state, action) => ({
         ...state,
         loading: false,
-      };    });
+    }))
   },
 });
 

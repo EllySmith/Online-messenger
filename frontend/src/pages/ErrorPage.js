@@ -7,7 +7,7 @@ const ErrorPage = () => {
     <div className="text-center">
       <h3>{t('pagenotfound.notfound')}</h3>
       <p>
-        {t('pagenotfound.but')} 
+        {t('pagenotfound.but')}
         <a href="/">{t('pagenotfound.mainpage')}</a>
         .
       </p>

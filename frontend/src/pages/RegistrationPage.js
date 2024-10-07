@@ -118,7 +118,7 @@ const Registration = () => {
                               type="password"
                               name="confirmPassword"
                               className={`form-control ${
-                                errors.confirmPassword 
+                                errors.confirmPassword
                                 && touched.confirmPassword
                                   ? 'is-invalid'
                                   : ''
@@ -131,8 +131,9 @@ const Registration = () => {
                             >
                               {t('form.passwordCheck')}
                             </label>
-                            {errors.confirmPassword &&
-                              touched.confirmPassword && (
+                            {errors.confirmPassword
+                            && touched.confirmPassword
+                            && (
                                 <div className="invalid-feedback">
                                   {errors.confirmPassword}
                                 </div>
@@ -163,7 +164,10 @@ const Registration = () => {
               <div className="card-footer text-center">
                 <p>
                   {t('form.withAccount')} 
-                  <a href="/">{t('form.enter')}</a>.
+                  <a href="/">
+                  {t('form.enter')}
+                  </a>
+                  .
                 </p>
               </div>
             </div>
@@ -172,6 +176,6 @@ const Registration = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Registration;

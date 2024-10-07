@@ -66,6 +66,6 @@ const App = () => {
       </ErrorBoundary>
     </Provider>
   );
-}
+};
 
 export default App;

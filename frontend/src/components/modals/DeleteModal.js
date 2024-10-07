@@ -43,6 +43,6 @@ const DeleteModal = () => {
       </Modal>
     </div>
   );
-}
+};
 
 export default DeleteModal;

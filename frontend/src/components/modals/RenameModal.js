@@ -79,6 +79,6 @@ const RenameModal = () => {
       </Modal>
     </div>
   );
-}
+};
 
 export default RenameModal;

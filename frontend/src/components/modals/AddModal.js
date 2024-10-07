@@ -62,9 +62,6 @@ const AddModal = () => {
           <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <label className="visually-hidden" htmlFor="name">
-            Имя канала
-          </label>
           <input
             type="text"
             id="name"
@@ -75,6 +72,9 @@ const AddModal = () => {
             onKeyDown={handleKeyDown}
             required
           />
+          <label htmlFor="name" className="visually-hidden">
+          Имя канала
+          </label>
           {invalidName && (
             <div className="invalid-feedback">{t('modals.invalidName')}</div>
           )}

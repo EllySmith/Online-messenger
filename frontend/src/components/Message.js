@@ -4,8 +4,13 @@ const Message = ({ messageId, username, body }) => (
   <div className="chat-messages overflow-auto" key={messageId}>
     <div className="text-break mb-2">
       <p>
-        <b>{username}:</b>
-        <span> {body}</span>
+        <b>
+          {username}
+          :
+          </b>
+        <span>
+          {body}
+          </span>
       </p>
     </div>
   </div>

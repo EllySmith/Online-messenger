@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="container d-flex justify-content-between align-items-center">
-        <h1 href="/">Hexlet Chat</h1>
+        <h1>Hexlet Chat</h1>
 
         <div className="d-flex align-items-center justify-items-center">
           {localStorage.username && (
@@ -36,28 +36,21 @@ const Header = () => {
           <button
             type="button"
             className="btn btn-light eng"
-            onClick={() => {
-              changeLanguage('eng');
-            }}
-          >
-          </button>
+            onClick={() => changeLanguage('eng')}
+            aria-label="english"
+          />            
           <button
             type="button"
             className="btn btn-light mx-2 it"
-            onClick={() => {
-              changeLanguage('it');
-            }}
-          >
-          </button>
-          {' '}
+            onClick={() => changeLanguage('it')}
+            aria-label="italian"
+          />
           <button
             type="button"
             className="btn btn-light ru"
-            onClick={() => {
-              changeLanguage('ru');
-            }}
-          >           
-          </button>
+            onClick={() => changeLanguage('ru')}
+            aria-label="russian"
+          />
         </div>
       </div>
     </nav>

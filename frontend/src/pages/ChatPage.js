@@ -113,6 +113,6 @@ const ChatPage = () => {
       <ToastContainer />
     </div>
   );
-}
+};
 
 export default ChatPage;
