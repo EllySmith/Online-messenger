@@ -16,7 +16,7 @@ export const fetchChannels = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const deleteChannel = createAsyncThunk(
@@ -31,7 +31,7 @@ export const deleteChannel = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const changeChannelName = createAsyncThunk(
@@ -50,7 +50,7 @@ export const changeChannelName = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const addChannel = createAsyncThunk(
@@ -65,7 +65,7 @@ export const addChannel = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const initialState = {
@@ -83,7 +83,7 @@ const channelsSlice = createSlice({
   reducers: {
     resetChatState: (state) => {
       return {
-        ...state, 
+        ...state,
         channels: [
           { id: 1, name: 'general', removable: false },
           { id: 2, name: 'random', removable: false },
@@ -97,33 +97,42 @@ const channelsSlice = createSlice({
     },
     changeCurrentChannel: (state, action) => {
       return {
-        ...state, 
+        ...state,
         currentChannelId: action.payload,
-      }
+      };
     },
-      addChannelAction: (state, action) => {
-        return {
-          ...state,
-          channels: [...state.channels, action.payload],
-        };
-      },
-      deleteChannelAction: (state, action) => {
-        return {
-          ...state,
-          channels: state.channels.filter(
-            (channel) => channel.id !== action.payload
-          ),
-        };
+    addChannelAction: (state, action) => {
+      return {
+        ...state,
+        channels: [...state.channels, action.payload],
+      };
+    },
+    deleteChannelAction: (state, action) => {
+      return {
+        ...state,
+        channels: state.channels.filter(
+          (channel) => channel.id !== action.payload
+        ),
+      };
+    },
+    changeChannelNameAction: (state, action) => {
+      const updatedChannel = action.payload;
+      const channelIndex = state.channels.findIndex(
+        (channel) => channel.id === updatedChannel.id
+      );
+      if (channelIndex >= 0) {
+        state.channels[channelIndex] = updatedChannel;
+      }
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchChannels.pending, (state) => {
         return {
-          ...state, 
+          ...state,
           loading: true,
           error: null,
-        }
+        };
       })
       .addCase(fetchChannels.fulfilled, (state, action) => {
         return {
@@ -141,10 +150,10 @@ const channelsSlice = createSlice({
       })
       .addCase(deleteChannel.pending, (state) => {
         return {
-          ...state, 
+          ...state,
           loading: true,
           error: null,
-        }
+        };
       })
       .addCase(deleteChannel.fulfilled, (state, action) => {
         return {
@@ -164,38 +173,47 @@ const channelsSlice = createSlice({
       })
       .addCase(changeChannelName.pending, (state) => {
         return {
-          ...state, 
+          ...state,
           loading: true,
           error: null,
-        }
+        };
       })
       .addCase(changeChannelName.fulfilled, (state, action) => {
         const updatedChannel = action.payload;
         const channelIndex = state.channels.findIndex(
           (channel) => channel.id === updatedChannel.id
         );
+
         if (channelIndex >= 0) {
-          state.channels[channelIndex] = updatedChannel;
+          const updatedChannels = [
+            ...state.channels.slice(0, channelIndex),
+            updatedChannel,
+            ...state.channels.slice(channelIndex + 1),
+          ];
+
+          return {
+            ...state,
+            loading: false,
+            channels: updatedChannels,
+          };
         }
+
         return {
           ...state,
           loading: false,
-          error: action.payload,
+          error: null, // Reset error if channel was not found (optional, depending on your error handling)
         };
       })
       .addCase(changeChannelName.rejected, (state, action) => {
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
+        state.loading = false;
+        state.error = action.payload;
       })
       .addCase(addChannel.pending, (state) => {
         return {
-          ...state, 
+          ...state,
           loading: true,
           error: null,
-        }
+        };
       })
       .addCase(addChannel.fulfilled, (state, action) => {
         return {
@@ -219,5 +237,6 @@ export const {
   addChannelAction,
   deleteChannelAction,
   changeCurrentChannel,
+  changeChannelNameAction,
 } = channelsSlice.actions;
 export const channelsReducer = channelsSlice.reducer;
