@@ -1,9 +1,8 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeCurrentChannel } from '../store/channelsSlice';
-import ChannelMenu from './ChannelMenu';
-import { showModal } from '../store/modalSlice';
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCurrentChannel } from "../store/channelsSlice";
+import ChannelMenu from "./ChannelMenu";
+import { showModal } from "../store/modalSlice";
 
 const ChannelButton = ({ id, name, removable }) => {
   const dispatch = useDispatch();
@@ -13,16 +12,17 @@ const ChannelButton = ({ id, name, removable }) => {
   };
 
   const handleRenameClick = () => {
-    dispatch(showModal({ type: 'rename', channelId: id }));
+    dispatch(showModal({ type: "rename", channelId: id }));
   };
-  
+
   const handleDeleteClick = () => {
-    dispatch(showModal({ type: 'delete', channelId: id }));
+    dispatch(showModal({ type: "delete", channelId: id }));
   };
 
-  const currentChannelId = useSelector(state => state.channels.currentChannelId);
-  const buttonClass = id === currentChannelId ? 'btn btn-secondary' : 'btn';
-
+  const currentChannelId = useSelector(
+    (state) => state.channels.currentChannelId
+  );
+  const buttonClass = id === currentChannelId ? "btn btn-secondary" : "btn";
 
   return (
     <>
@@ -36,7 +36,13 @@ const ChannelButton = ({ id, name, removable }) => {
             <span className="me-1">#</span>
             {name}
           </button>
-          {removable && <ChannelMenu handleDeleteClick={handleDeleteClick} handleRenameClick={handleRenameClick} buttonClass={buttonClass}/>}
+          {removable && (
+            <ChannelMenu
+              handleDeleteClick={handleDeleteClick}
+              handleRenameClick={handleRenameClick}
+              buttonClass={buttonClass}
+            />
+          )}
         </div>
       </li>
     </>

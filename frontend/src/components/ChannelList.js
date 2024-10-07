@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchChannels } from '../store/channelsSlice';
-import ChannelButton from './ChannelButton'; 
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchChannels } from "../store/channelsSlice";
+import ChannelButton from "./ChannelButton";
 
 const ChannelList = ({ onClick }) => {
-  const channels = useSelector(state => state.channels.channels);
+  const channels = useSelector((state) => state.channels.channels);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,10 +12,10 @@ const ChannelList = ({ onClick }) => {
   }, [dispatch, channels]);
 
   return (
-    <div>        
+    <div>
       <ul className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
-        {channels.map(channel => (
-          <ChannelButton key={channel.id} {...channel}/>
+        {channels.map((channel) => (
+          <ChannelButton key={channel.id} {...channel} />
         ))}
       </ul>
     </div>

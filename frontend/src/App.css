@@ -1,25 +1,27 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .eng {
-  background-image: url('./images/eng.png'); 
-  background-size: contain; 
+  background-image: url("./images/eng.png");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .it {
-  background-image: url('./images/it.png'); 
+  background-image: url("./images/it.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .ru {
-  background-image: url('./images/ru.png');
+  background-image: url("./images/ru.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
