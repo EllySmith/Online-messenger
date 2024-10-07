@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeChannelName } from '../../store/channelsSlice';
-import { hideModal } from '../../store/modalSlice';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
 import { toast } from 'react-toastify';
+import { changeChannelName } from '../../store/channelsSlice';
+import { hideModal } from '../../store/modalSlice';
 
-function RenameModal({ id }) {
+const RenameModal = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);

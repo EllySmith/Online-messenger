@@ -1,24 +1,25 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
+const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
   const { t } = useTranslation();
   return (
     <>
       <button
-        type="button"
+        type="menu"
         id="menu"
         className={`flex-grow-0 dropdown-toggle dropdown-toggle-split ${buttonClass}`}
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        <label className="visually-hidden" htmlFor="menu">
+        <span className="visually-hidden" htmlFor="menu">
           Управление каналом
-        </label>
+        </span>
       </button>
       <ul className="dropdown-menu">
         <li>
           <button
+            type="button"
             className="dropdown-item"
             id="rename"
             onClick={handleRenameClick}
@@ -31,6 +32,7 @@ function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
         </li>
         <li>
           <button
+            type="button"
             className="dropdown-item text-danger"
             id="delete"
             onClick={handleDeleteClick}
@@ -44,6 +46,6 @@ function ChannelMenu({ handleRenameClick, handleDeleteClick, buttonClass }) {
       </ul>
     </>
   );
-}
+};
 
 export default ChannelMenu;

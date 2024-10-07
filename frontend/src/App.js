@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider, ErrorBoundary } from '@rollbar/react';
 import {
   deleteChannel,
   changeChannelName,
@@ -13,7 +14,6 @@ import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
 import ChatPage from './pages/ChatPage';
 import RegistrationPage from './pages/RegistrationPage';
-import { Provider, ErrorBoundary } from '@rollbar/react';
 import './i18n';
 
 let socket;
@@ -23,7 +23,7 @@ const rollbarConfig = {
   environment: 'testenv',
 };
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   socket = io();
@@ -50,7 +50,7 @@ function App() {
       socket.off('channelUpdated');
       socket.off('newChannel');
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <Provider config={rollbarConfig}>

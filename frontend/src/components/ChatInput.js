@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
-import { randomKey } from '../utils/different';
-import { sendMessage } from '../store/messagesSlice';
 import { toast } from 'react-toastify';
+import randomKey from '../utils/different';
+import { sendMessage } from '../store/messagesSlice';
 
 const Input = React.forwardRef(({ currentChannelId }, ref) => {
   const { t } = useTranslation();
@@ -25,8 +25,8 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
             body: messageInput,
             messageId: newId,
             channelId: currentChannelId,
-            username: username,
-          })
+            username,
+          }),
         ).unwrap();
         setMessageInput('');
       } catch (error) {
@@ -58,9 +58,7 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
             aria-label="Новое сообщение"
             placeholder={t('chat.messagePlaceholder')}
             value={messageInput}
-            onChange={(e) =>
-              setMessageInput(leoProfanity.clean(e.target.value))
-            }
+            onChange={(e) => setMessageInput(leoProfanity.clean(e.target.value))}
             onKeyDown={handleKeyDown}
             ref={ref}
             className="border-0 p-0 ps-2 form-control"
@@ -76,5 +74,7 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
     </div>
   );
 });
+
+Input.displayName = 'Input';
 
 export default Input;

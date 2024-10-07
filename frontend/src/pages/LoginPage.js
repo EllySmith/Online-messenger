@@ -2,14 +2,14 @@ import '../App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
-import apiRoutes from '../routes.js';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { auto } from 'async';
+import apiRoutes from '../routes.js';
 import Header from '../components/Header.js';
 import LoginImage from '../images/LoginPage.jpg';
-import { auto } from 'async';
-import { useTranslation } from 'react-i18next';
 
-const LoginPage = (index) => {
+const LoginPage = () => {
   const { t } = useTranslation();
 
   const [error, setError] = useState('');
@@ -18,11 +18,11 @@ const LoginPage = (index) => {
   const handleSubmit = async (values) => {
     try {
       const { data } = await axios.post(apiRoutes.login(), values);
-      const token = data.token;
+      const { token } = data;
       localStorage.setItem('token', token);
       localStorage.setItem('username', values.username);
       navigate('/');
-    } catch (error) {
+    } catch (e) {
       setError(t('errors.wrongPassword'));
     }
   };
@@ -87,7 +87,8 @@ const LoginPage = (index) => {
               <div className="card-footer text-center pt-3">
                 <p>
                   {error && <div className="error-message">{error}</div>}
-                  {t('form.withoutAccount')}{' '}
+                  {t('form.withoutAccount')}
+                  {' '}
                   <a href="/signup">{t('form.register')}</a>
                 </p>
               </div>

@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import leoProfanity from 'leo-profanity';
+import { toast } from 'react-toastify';
 import { hideModal } from '../../store/modalSlice';
 import {
   addChannel,
   changeCurrentChannel,
   fetchChannels,
 } from '../../store/channelsSlice';
-import { randomKey } from '../../utils/different';
-import { useTranslation } from 'react-i18next';
-import leoProfanity from 'leo-profanity';
-import { toast } from 'react-toastify';
 
-function AddModal() {
+const AddModal = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);
@@ -63,6 +62,9 @@ function AddModal() {
           <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <label className="visually-hidden" htmlFor="name">
+            Имя канала
+          </label>
           <input
             type="text"
             id="name"
@@ -73,9 +75,6 @@ function AddModal() {
             onKeyDown={handleKeyDown}
             required
           />
-          <label className="visually-hidden" htmlFor="name">
-            Имя канала
-          </label>
           {invalidName && (
             <div className="invalid-feedback">{t('modals.invalidName')}</div>
           )}
@@ -91,6 +90,6 @@ function AddModal() {
       </Modal>
     </div>
   );
-}
+};
 
 export default AddModal;

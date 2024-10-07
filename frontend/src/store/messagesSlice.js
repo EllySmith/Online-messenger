@@ -16,7 +16,7 @@ export const sendMessage = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const fetchMessages = createAsyncThunk(
@@ -37,7 +37,7 @@ export const fetchMessages = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const initialState = {
@@ -60,29 +60,40 @@ const messagesSlice = createSlice({
       state.socketConnected = false;
     },
     addMessage: (state, action) => {
-      state.messages.push(action.payload);
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
     },
-  },
-  addChanel: (state, action) => {
-    state.channels.push(action.payload);
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMessages.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        return {
+          ...state,
+          loading: true,
+          error: null,
+        };
       })
       .addCase(fetchMessages.fulfilled, (state, action) => {
-        state.loading = false;
-        state.messages = action.payload;
+        return {
+          ...state,
+          loading: false,
+          messages: action.payload,
+        };
       })
       .addCase(fetchMessages.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
       });
     builder.addCase(sendMessage.fulfilled, (state, action) => {
-      state.loading = false;
-    });
+      return {
+        ...state,
+        loading: false,
+      };    });
   },
 });
 

@@ -20,7 +20,7 @@ const ChannelButton = ({ id, name, removable }) => {
   };
 
   const currentChannelId = useSelector(
-    (state) => state.channels.currentChannelId
+    (state) => state.channels.currentChannelId,
   );
   const buttonClass = id === currentChannelId ? 'btn btn-secondary' : 'btn';
 

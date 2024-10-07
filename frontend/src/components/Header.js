@@ -34,23 +34,30 @@ const Header = () => {
             </button>
           )}
           <button
+            type="button"
             className="btn btn-light eng"
             onClick={() => {
               changeLanguage('eng');
             }}
-          ></button>
+          >
+          </button>
           <button
+            type="button"
             className="btn btn-light mx-2 it"
             onClick={() => {
               changeLanguage('it');
             }}
-          ></button>{' '}
+          >
+          </button>
+          {' '}
           <button
+            type="button"
             className="btn btn-light ru"
             onClick={() => {
               changeLanguage('ru');
             }}
-          ></button>
+          >           
+          </button>
         </div>
       </div>
     </nav>

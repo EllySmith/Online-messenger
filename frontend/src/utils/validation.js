@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 
-export const useValidationSchema = () => {
+const useValidationSchema = () => {
   const { t } = useTranslation();
 
   return Yup.object().shape({
@@ -17,3 +17,5 @@ export const useValidationSchema = () => {
       .required(t('errors.noSecondPassword')),
   });
 };
+
+export default useValidationSchema;

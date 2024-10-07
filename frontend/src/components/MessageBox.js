@@ -7,10 +7,10 @@ const MessageBox = ({ messageListRef }) => {
   const messages = useSelector((state) => state.messages.messages);
   const dispatch = useDispatch();
   const currentChannelId = useSelector(
-    (state) => state.channels.currentChannelId
+    (state) => state.channels.currentChannelId,
   );
   const filteredMessages = messages.filter(
-    (message) => message.channelId === currentChannelId
+    (message) => message.channelId === currentChannelId,
   );
 
   useEffect(() => {
@@ -25,7 +25,12 @@ const MessageBox = ({ messageListRef }) => {
       <div className="flex-grow-1 overflow-auto p-3" ref={messageListRef}>
         <ul className="list-unstyled">
           {filteredMessages.map((message) => (
-            <Message key={message.messageId} {...message} />
+            <Message
+              key={message.messageId}
+              messageId={message.messageId}
+              username={message.username}
+              body={message.body}
+            />
           ))}
         </ul>
       </div>

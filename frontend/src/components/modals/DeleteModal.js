@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideModal } from '../../store/modalSlice';
-import { deleteChannel } from '../../store/channelsSlice';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { hideModal } from '../../store/modalSlice';
+import { deleteChannel } from '../../store/channelsSlice';
 
-function DeleteModal({ id }) {
+const DeleteModal = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.modal.visible);

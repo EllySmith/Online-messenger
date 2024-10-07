@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { showModal } from '../store/modalSlice';
 import { useTranslation } from 'react-i18next';
+import { showModal } from '../store/modalSlice';
 
-function ChannelListHeader() {
+const ChannelListHeader = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

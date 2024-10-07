@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import apiRoutes from '../routes';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import { useValidationSchema } from '../utils/validation';
 import { useTranslation } from 'react-i18next';
+import apiRoutes from '../routes';
+import Header from '../components/Header';
+import useValidationSchema from '../utils/validation';
 import RegImage from '../images/RegistrationPage.png';
 
 import '../App.css';
 
-function Registration() {
+const Registration = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const validationSchema = useValidationSchema();
@@ -24,7 +24,7 @@ function Registration() {
         username,
         password,
       });
-      const token = response.data.token;
+      const { token } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
       navigate('/');
@@ -118,8 +118,8 @@ function Registration() {
                               type="password"
                               name="confirmPassword"
                               className={`form-control ${
-                                errors.confirmPassword &&
-                                touched.confirmPassword
+                                errors.confirmPassword 
+                                && touched.confirmPassword
                                   ? 'is-invalid'
                                   : ''
                               }`}
@@ -136,7 +136,7 @@ function Registration() {
                                 <div className="invalid-feedback">
                                   {errors.confirmPassword}
                                 </div>
-                              )}
+                            )}
                           </div>
                         </div>
                         <div className="text-center">
@@ -149,7 +149,8 @@ function Registration() {
                             {t('form.registration')}
                           </button>
                         </div>
-                        {error && (
+                        {error 
+                        && (
                           <div className="text-danger text-center mt-3">
                             {error}
                           </div>
@@ -161,7 +162,8 @@ function Registration() {
               </div>
               <div className="card-footer text-center">
                 <p>
-                  {t('form.withAccount')} <a href="/">{t('form.enter')}</a>.
+                  {t('form.withAccount')} 
+                  <a href="/">{t('form.enter')}</a>.
                 </p>
               </div>
             </div>

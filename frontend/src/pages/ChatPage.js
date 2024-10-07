@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LeoProfanity from 'leo-profanity';
 import ChannelList from '../components/ChannelList';
 import Input from '../components/ChatInput';
 import Header from '../components/Header';
@@ -11,18 +14,15 @@ import { fetchChannels, changeCurrentChannel } from '../store/channelsSlice';
 import { fetchMessages } from '../store/messagesSlice';
 import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import MessageBoxHeader from '../components/MessageBoxHeader';
-import LeoProfanity from 'leo-profanity';
 import AddModal from '../components/modals/AddModal';
 
-function ChatPage() {
+const ChatPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messages = useSelector((state) => state.messages.messages);
   const currentChannelId = useSelector(
-    (state) => state.channels.currentChannelId
+    (state) => state.channels.currentChannelId,
   );
   const modal = useSelector((state) => state.modal);
   const messageInputRef = useRef(null);
@@ -52,7 +52,7 @@ function ChatPage() {
 
   const channelName = useSelector((state) => {
     const channel = state.channels.channels.find(
-      (c) => c.id === currentChannelId
+      (c) => c.id === currentChannelId,
     );
     return channel ? channel.name : 'unknown';
   });
