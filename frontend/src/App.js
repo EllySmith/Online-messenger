@@ -1,6 +1,6 @@
 import './App.css';
 import io from 'socket.io-client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {deleteChannel, changeChannelName, addChannelAction } from './store/channelsSlice';
@@ -23,43 +23,35 @@ const rollbarConfig = {
   
 function App() {
   const dispatch = useDispatch();
-  const socketInitialized = useRef(false);
-
-  useEffect(() => {
-    if (!socket) {
+    
       socket = io();
-    }
-
-    if (!socketInitialized.current) {  
-      const setupSocketListeners = () => {
+    
+      useEffect(() => {
         socket.on('newMessage', (message) => {
           dispatch(addMessage(message));
         });
-
         socket.on('channelDeleted', (channelId) => {
           dispatch(deleteChannel(channelId));
         });
-
+        
         socket.on('channelUpdated', (updatedChannel) => {
           dispatch(changeChannelName(updatedChannel));
         });
-
+        
         socket.on('newChannel', (channel) => {
           dispatch(addChannelAction(channel));
         });
-      };
+        
+        return () => {
+          socket.off('newMessage');
+          socket.off('channelDeleted');
+          socket.off('channelUpdated');
+          socket.off('newChannel');
+        };
 
-      setupSocketListeners();
-      socketInitialized.current = true;
-    }
+      }, []);
 
-    return () => {
-      socket.off('newMessage');
-      socket.off('channelDeleted');
-      socket.off('channelUpdated');
-      socket.off('newChannel');
-    };
-  }, [dispatch]);
+
     
   return (
     <Provider config={rollbarConfig}>

@@ -84,7 +84,6 @@ const messagesSlice = createSlice({
       });
       builder
       .addCase(sendMessage.fulfilled, (state, action) => {
-        state.messages.push(action.payload);
         state.loading = false;
       })
   },
