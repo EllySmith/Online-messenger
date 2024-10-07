@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "../../store/modalSlice";
-import { addChannel, fetchChannels } from "../../store/channelsSlice";
+import { addChannel, changeCurrentChannel, fetchChannels } from "../../store/channelsSlice";
 import { randomKey } from "../../utils/different";
 import { useTranslation } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
@@ -31,9 +31,12 @@ function AddModal() {
       return; 
   }
   setInvalidName(false);
-  const newId = randomKey();
-    const newChannel = { name: newName, id: newId, removable: true };    
-    dispatch(addChannel(newChannel));
+    const newChannel = { name: newName, removable: true };    
+    const response = await dispatch(addChannel(newChannel));
+    if (response.meta.requestStatus === 'fulfilled') {
+      const { id } = response.payload; 
+      dispatch(changeCurrentChannel(id)); 
+    }
     setNewName('');
     dispatch(hideModal());
     dispatch(fetchChannels());

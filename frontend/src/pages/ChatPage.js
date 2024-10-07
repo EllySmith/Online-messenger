@@ -42,7 +42,6 @@ function ChatPage() {
 
     dispatch(fetchChannels());
     dispatch(fetchMessages());
-    console.log('fetching channels and messages');
     dispatch(changeCurrentChannel('1'));
   }, [dispatch]);
 

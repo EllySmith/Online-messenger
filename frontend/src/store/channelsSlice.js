@@ -93,7 +93,6 @@ const channelsSlice = createSlice({
     },
     addChannelAction: (state, action) => {
       state.channels.push(action.payload);
-      state.currentChannelId = action.payload.id;
     },
     deleteChannelAction: (state, action) => {
       state.channels = state.channels.filter(channel => channel.id !== action.payload);
@@ -148,7 +147,6 @@ const channelsSlice = createSlice({
       .addCase(addChannel.fulfilled, (state, action) => {
         state.loading = false;
         state.channels.push(action.payload);
-        state.currentChannelId = action.payload.id; 
       })
       .addCase(addChannel.rejected, (state, action) => {
         state.loading = false;
