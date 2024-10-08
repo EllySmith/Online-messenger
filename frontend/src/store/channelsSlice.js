@@ -121,9 +121,10 @@ const channelsSlice = createSlice({
         ];
         return {
           ...state,
-          channels: updatedChannels
+          channels: updatedChannels,
         };
       }
+      return state;
     },
   },
   extraReducers: (builder) => {

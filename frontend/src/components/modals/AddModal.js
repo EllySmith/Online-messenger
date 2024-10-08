@@ -62,12 +62,12 @@ const AddModal = () => {
           <Modal.Title>{t('modals.addHeader')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <label htmlFor="name" className="visually-hidden">
+          <label htmlFor="channel-name" className="visually-hidden">
             Имя канала
           </label>
           <input
             type="text"
-            id="name"
+            id="channel-name"
             className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
