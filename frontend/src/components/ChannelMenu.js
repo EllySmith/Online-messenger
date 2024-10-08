@@ -18,9 +18,6 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-        <label className="visually-hidden" htmlFor="rename">
-            Переименовать
-          </label>
           <button
             type="button"
             className="dropdown-item"
@@ -31,9 +28,6 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
           </button>
         </li>
         <li>
-        <label className="visually-hidden" htmlFor="delete">
-            Удалить
-          </label>
           <button
             type="button"
             className="dropdown-item text-danger"
