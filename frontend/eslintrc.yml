@@ -43,6 +43,6 @@ rules:
 
 overrides:
   - files:
-      - "/src/components/modal/AddModal.js"
+      - "/src/components/modals/AddModal.js"
     rules:
       jsx-a11y/label-has-associated-control: off
