@@ -44,7 +44,7 @@ export const changeChannelName = createAsyncThunk(
         { name },
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
       return response.data;
     } catch (error) {
@@ -106,8 +106,8 @@ const channelsSlice = createSlice({
     deleteChannelAction: (state, action) => ({
       ...state,
       channels: state.channels.filter(
-        (channel) => channel.id !== action.payload
-      )
+        (channel) => channel.id !== action.payload,
+      ),
     }),
     changeChannelNameAction: (state, action) => {
       const updatedChannel = action.payload;
@@ -145,7 +145,7 @@ const channelsSlice = createSlice({
         ...state,
         loading: false,
         channels: state.channels.filter(
-          (channel) => channel.id !== action.payload
+          (channel) => channel.id !== action.payload,
         ),
       }))
       .addCase(deleteChannel.rejected, (state, action) => ({
@@ -161,7 +161,7 @@ const channelsSlice = createSlice({
       .addCase(changeChannelName.fulfilled, (state, action) => {
         const updatedChannel = action.payload;
         const channelIndex = state.channels.findIndex(
-          (channel) => channel.id === updatedChannel.id
+          (channel) => channel.id === updatedChannel.id,
         );
 
         if (channelIndex >= 0) {

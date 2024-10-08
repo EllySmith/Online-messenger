@@ -76,9 +76,9 @@ const Registration = () => {
                               type="text"
                               name="username"
                               className={`form-control ${errors.username && touched.username
-                                  ? 'is-invalid'
-                                  : ''
-                                }`}
+                                ? 'is-invalid'
+                                : ''
+                              }`}
                               placeholder={t('form.name')}
                             />
                             <label htmlFor="username" className="form-label">
@@ -96,9 +96,9 @@ const Registration = () => {
                               type="password"
                               name="password"
                               className={`form-control ${errors.password && touched.password
-                                  ? 'is-invalid'
-                                  : ''
-                                }`}
+                                ? 'is-invalid'
+                                : ''
+                              }`}
                               placeholder={t('form.password')}
                             />
                             <label htmlFor="password" className="form-label">
@@ -117,9 +117,9 @@ const Registration = () => {
                               name="confirmPassword"
                               className={`form-control ${errors.confirmPassword
                                   && touched.confirmPassword
-                                  ? 'is-invalid'
-                                  : ''
-                                }`}
+                                ? 'is-invalid'
+                                : ''
+                              }`}
                               placeholder={t('form.passwordCheck')}
                             />
                             <label

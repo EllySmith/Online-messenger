@@ -52,7 +52,7 @@ const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    resetChatState: (state) => ({
+    resetChatState: () => ({
       channels: [],
       messages: [],
       loading: false,
@@ -81,10 +81,10 @@ const messagesSlice = createSlice({
         loading: false,
         error: action.payload,
       }))
-    builder.addCase(sendMessage.fulfilled, (state, action) => ({
+      .addCase(sendMessage.fulfilled, (state) => ({
       ...state,
       loading: false,
-    }))
+    }));
   },
 });
 
