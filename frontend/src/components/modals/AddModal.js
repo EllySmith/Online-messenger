@@ -71,7 +71,6 @@ const AddModal = () => {
             className={`form-control mb-2 ${invalidName ? 'is-invalid' : ''}`}
             value={newName}
             onChange={(e) => setNewName(leoProfanity.clean(e.target.value))}
-            aria-label={t('modals.addPlaceHolder')}
             onKeyDown={handleKeyDown}
             required
           />
