@@ -75,11 +75,10 @@ const Registration = () => {
                               id="username"
                               type="text"
                               name="username"
-                              className={`form-control ${
-                                errors.username && touched.username
+                              className={`form-control ${errors.username && touched.username
                                   ? 'is-invalid'
                                   : ''
-                              }`}
+                                }`}
                               placeholder={t('form.name')}
                             />
                             <label htmlFor="username" className="form-label">
@@ -96,11 +95,10 @@ const Registration = () => {
                               id="password"
                               type="password"
                               name="password"
-                              className={`form-control ${
-                                errors.password && touched.password
+                              className={`form-control ${errors.password && touched.password
                                   ? 'is-invalid'
                                   : ''
-                              }`}
+                                }`}
                               placeholder={t('form.password')}
                             />
                             <label htmlFor="password" className="form-label">
@@ -117,12 +115,11 @@ const Registration = () => {
                               id="confirmPassword"
                               type="password"
                               name="confirmPassword"
-                              className={`form-control ${
-                                errors.confirmPassword
-                                && touched.confirmPassword
+                              className={`form-control ${errors.confirmPassword
+                                  && touched.confirmPassword
                                   ? 'is-invalid'
                                   : ''
-                              }`}
+                                }`}
                               placeholder={t('form.passwordCheck')}
                             />
                             <label
@@ -132,12 +129,12 @@ const Registration = () => {
                               {t('form.passwordCheck')}
                             </label>
                             {errors.confirmPassword
-                            && touched.confirmPassword
-                            && (
+                              && touched.confirmPassword
+                              && (
                                 <div className="invalid-feedback">
                                   {errors.confirmPassword}
                                 </div>
-                            )}
+                              )}
                           </div>
                         </div>
                         <div className="text-center">
@@ -150,12 +147,12 @@ const Registration = () => {
                             {t('form.registration')}
                           </button>
                         </div>
-                        {error 
-                        && (
-                          <div className="text-danger text-center mt-3">
-                            {error}
-                          </div>
-                        )}
+                        {error
+                          && (
+                            <div className="text-danger text-center mt-3">
+                              {error}
+                            </div>
+                          )}
                       </Form>
                     )}
                   </Formik>
@@ -163,9 +160,9 @@ const Registration = () => {
               </div>
               <div className="card-footer text-center">
                 <p>
-                  {t('form.withAccount')} 
+                  {t('form.withAccount')}
                   <a href="/">
-                  {t('form.enter')}
+                    {t('form.enter')}
                   </a>
                   .
                 </p>

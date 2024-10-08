@@ -19,14 +19,14 @@ const modalSlice = createSlice({
       };
     },
     hideModal: (state) => ({
-        ...state,
-        visible: false,
-        type: null,
-        channelId: null,
+      ...state,
+      visible: false,
+      type: null,
+      channelId: null,
     }),
     changeModalType: (state, action) => ({
-        ...state,
-        type: action.payload.type,
+      ...state,
+      type: action.payload.type,
     }),
   },
 });

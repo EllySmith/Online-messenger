@@ -17,7 +17,7 @@ const MessageBoxHeader = ({ channelName }) => {
         <b>
           #
           {channelName}
-          </b>
+        </b>
       </p>
       <span className="text-muted">
         {filteredMessages.length}

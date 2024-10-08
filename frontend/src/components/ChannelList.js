@@ -15,13 +15,13 @@ const ChannelList = () => {
     <div>
       <ul className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => (
-        <ChannelButton
-    key={channel.id}
-    id={channel.id}
-    name={channel.name}
-    removable={channel.removable}
-  />
-      ))}
+          <ChannelButton
+            key={channel.id}
+            id={channel.id}
+            name={channel.name}
+            removable={channel.removable}
+          />
+        ))}
       </ul>
     </div>
   );

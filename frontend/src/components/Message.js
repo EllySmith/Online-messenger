@@ -7,10 +7,10 @@ const Message = ({ messageId, username, body }) => (
         <b>
           {username}
           :
-          </b>
+        </b>
         <span>
           {body}
-          </span>
+        </span>
       </p>
     </div>
   </div>
