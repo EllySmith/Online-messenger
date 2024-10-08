@@ -1,3 +1,4 @@
+/* eslint sx-a11y/label-has-associated-control */  // --> OFF
 import React, { useState, useRef, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
