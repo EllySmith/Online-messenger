@@ -82,9 +82,9 @@ const messagesSlice = createSlice({
         error: action.payload,
       }))
       .addCase(sendMessage.fulfilled, (state) => ({
-      ...state,
-      loading: false,
-    }));
+        ...state,
+        loading: false,
+      }));
   },
 });
 

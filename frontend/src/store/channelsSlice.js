@@ -93,12 +93,10 @@ const channelsSlice = createSlice({
       error: null,
       socketConnected: false,
     }),
-    changeCurrentChannel: (state, action) => {
-      return {
+    changeCurrentChannel: (state, action) => ({
         ...state,
         currentChannelId: action.payload,
-      };
-    },
+    }),
     addChannelAction: (state, action) => ({
       ...state,
       channels: [...state.channels, action.payload],
@@ -111,11 +109,19 @@ const channelsSlice = createSlice({
     }),
     changeChannelNameAction: (state, action) => {
       const updatedChannel = action.payload;
-      const channelIndex = state.channels.findIndex(
-        (channel) => channel.id === updatedChannel.id,
-      );
-      if (channelIndex >= 0) {
-        state.channels[channelIndex] = updatedChannel;
+  const channelIndex = state.channels.findIndex(
+    (channel) => channel.id === updatedChannel.id,
+  );
+
+  if (channelIndex >= 0) {
+    const updatedChannels = [
+      ...state.channels.slice(0, channelIndex),
+      updatedChannel,
+      ...state.channels.slice(channelIndex + 1),
+    ];
+      return {
+          ...state,
+          channels: updatedChannels };
       }
     },
   },
