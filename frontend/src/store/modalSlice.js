@@ -11,10 +11,10 @@ const modalSlice = createSlice({
   initialState,
   reducers: {
     showModal: (state, action) => ({
-        ...state,
-        visible: true,
-        type: action.payload.type,
-        channelId: action.payload.channelId,
+      ...state,
+      visible: true,
+      type: action.payload.type,
+      channelId: action.payload.channelId,
     }),
     hideModal: (state) => ({
       ...state,
