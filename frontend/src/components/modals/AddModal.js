@@ -64,7 +64,7 @@ const AddModal = () => {
         </Modal.Header>
         <Modal.Body>
           <label htmlFor="channel-name" className="visually-hidden">
-            Имя канала
+            {t('modals.addLabel')}
           </label>
           <input
             type="text"

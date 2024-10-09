@@ -70,7 +70,7 @@ export const addChannel = createAsyncThunk(
 
 const initialState = {
   channels: [],
-  currentChannelId: 1,
+  currentChannelId: '1',
   loading: false,
   error: null,
   isLoggedIn: false,

@@ -29,12 +29,15 @@ export const ru = {
     rename: 'Переименовать',
     cancel: 'Отменить',
     addHeader: 'Добавить канал:',
+    addLabel: 'Имя канала',
     addPlaceHolder: 'Имя канала',
     quit: 'Отменить',
     add: 'Отправить',
+    menu: 'Управление каналом',
   },
   header: {
     quit: 'Выход',
+    title: 'Hexlet Chat',
   },
   errors: {
     wrongPassword: 'Неверные имя пользователя или пароль',

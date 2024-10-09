@@ -3,19 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LeoProfanity from 'leo-profanity';
 import ChannelList from '../components/ChannelList';
 import Input from '../components/ChatInput';
 import Header from '../components/Header';
 import '../App.css';
-import DeleteModal from '../components/modals/DeleteModal';
-import RenameModal from '../components/modals/RenameModal';
+import Modal from '../components/modals/Modal';
 import { fetchChannels, changeCurrentChannel } from '../store/channelsSlice';
 import { fetchMessages } from '../store/messagesSlice';
 import MessageBox from '../components/MessageBox';
 import ChannelListHeader from '../components/ChannelListHeader';
 import MessageBoxHeader from '../components/MessageBoxHeader';
-import AddModal from '../components/modals/AddModal';
 
 const ChatPage = () => {
   const dispatch = useDispatch();
@@ -24,12 +21,8 @@ const ChatPage = () => {
   const currentChannelId = useSelector(
     (state) => state.channels.currentChannelId,
   );
-  const modal = useSelector((state) => state.modal);
   const messageInputRef = useRef(null);
   const messageListRef = useRef(null);
-  LeoProfanity.loadDictionary(['en', 'ru', 'it']);
-  LeoProfanity.remove('boob');
-  LeoProfanity.add('boobs');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -41,7 +34,6 @@ const ChatPage = () => {
   useEffect(() => {
     dispatch(fetchChannels());
     dispatch(fetchMessages());
-    dispatch(changeCurrentChannel('1'));
   }, [dispatch]);
 
   useEffect(() => {
@@ -102,13 +94,7 @@ const ChatPage = () => {
           </div>
         </div>
       </div>
-      {modal.visible && modal.type === 'delete' && (
-        <DeleteModal id={modal.channelId} />
-      )}
-      {modal.visible && modal.type === 'rename' && (
-        <RenameModal id={modal.channelId} />
-      )}
-      {modal.visible && modal.type === 'add' && <AddModal />}
+      <Modal />
 
       <ToastContainer />
     </div>

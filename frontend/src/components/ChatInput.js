@@ -30,7 +30,6 @@ const Input = React.forwardRef(({ currentChannelId }, ref) => {
         ).unwrap();
         setMessageInput('');
       } catch (error) {
-        console.error('Failed to send message:', error);
         notify();
       } finally {
         setSendingMessage(false);

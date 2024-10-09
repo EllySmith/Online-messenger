@@ -13,7 +13,7 @@ const ChannelMenu = ({ handleRenameClick, handleDeleteClick, buttonClass }) => {
         aria-expanded="false"
       >
         <span className="visually-hidden" htmlFor="menu">
-          Управление каналом
+          {t('modals.menu')}
         </span>
       </button>
       <ul className="dropdown-menu">

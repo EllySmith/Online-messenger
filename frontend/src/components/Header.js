@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="container d-flex justify-content-between align-items-center">
-        <h1>Hexlet Chat</h1>
+      <a className="navbar-brand" href="/">{t('header.title')}</a>
 
         <div className="d-flex align-items-center justify-items-center">
           {localStorage.username && (

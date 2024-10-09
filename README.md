@@ -1,5 +1,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/EllySmith/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/EllySmith/frontend-project-12/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b3aa72f28fafedec7e77/maintainability)](https://codeclimate.com/github/EllySmith/frontend-project-12/maintainability)
+![Lint Status](https://github.com/EllySmith/frontend-project-12/actions/workflows/eslintrc.yml/badge.svg)
+
 
 # Online Messanger
 
@@ -10,6 +13,10 @@ Real-time messaging using Socket.io
 - Two default channels 
 - Possibility to add, rename and delete channels
 - Responsive design with mobile support
+
+# Demonstration
+
+https://frontend-project-12-bk7a.vercel.app/
 
 1. [Installation](#installation)
 2. [Usage](#usage)

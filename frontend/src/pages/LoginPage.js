@@ -5,8 +5,8 @@ import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { auto } from 'async';
-import apiRoutes from '../routes.js';
-import Header from '../components/Header.js';
+import apiRoutes from '../routes';
+import Header from '../components/Header';
 import LoginImage from '../images/LoginPage.jpg';
 
 const LoginPage = () => {
