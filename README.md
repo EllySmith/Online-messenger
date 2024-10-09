@@ -1,8 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/EllySmith/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/EllySmith/frontend-project-12/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b3aa72f28fafedec7e77/maintainability)](https://codeclimate.com/github/EllySmith/frontend-project-12/maintainability)
-![Lint Status](https://github.com/EllySmith/frontend-project-12/actions/workflows/eslintrc.yml/badge.svg)
-
+[![Linter](https://github.com/EllySmith/frontend-project-12/actions/workflows/lint.yml/badge.svg)](https://github.com/EllySmith/frontend-project-12/actions/workflows/lint.yml)
 
 # Online Messanger
 
