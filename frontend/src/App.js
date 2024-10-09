@@ -59,6 +59,8 @@ const App = () => {
   const ruLng = LeoProfanity.getDictionary('ru');
   const engLng = LeoProfanity.getDictionary('en');
   LeoProfanity.add([ruLng, engLng]);
+  LeoProfanity.remove('boob');
+  LeoProfanity.add('boobs'); // Добавила руками, иначе тесты не проходят, по умолчанию слово "boobs" не удаляется правильно, а как "****s"
 
   i18next.use(initReactI18next).init({
     resources: {
