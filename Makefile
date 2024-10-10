@@ -1,5 +1,5 @@
 lint-frontend:
-	cd frontend && npm run lint
+	cd frontend && make lint
 
 install:
 	npm install && cd frontend && npm install
