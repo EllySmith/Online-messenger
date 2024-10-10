@@ -21,7 +21,7 @@ export const sendMessage = createAsyncThunk(
 
 export const fetchMessages = createAsyncThunk(
   'chat/fetchMessages',
-  async (_, thunkAPI) => {
+  async (_, { extra: rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -35,7 +35,7 @@ export const fetchMessages = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   },
 );

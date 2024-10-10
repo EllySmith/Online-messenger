@@ -9,10 +9,10 @@ const ChannelList = () => {
 
   useEffect(() => {
     dispatch(fetchChannels());
-  }, [dispatch, channels]);
+  }, [dispatch]);
 
   return (
-    <div>
+    <div className="channel-list overflow-auto h-100">
       <ul className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => (
           <ChannelButton

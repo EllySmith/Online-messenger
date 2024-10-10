@@ -4,7 +4,7 @@ import apiRoutes from '../routes';
 
 export const fetchChannels = createAsyncThunk(
   'chat/fetchChannels',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Токен не найден');
@@ -14,7 +14,7 @@ export const fetchChannels = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   },
 );
