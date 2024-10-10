@@ -77,7 +77,7 @@ const ChatPage = () => {
 
                 <div className="col p-0 d-flex flex-column h-100">
                   <MessageBoxHeader channelName={channelName} />
-                  <MessageBox/>
+                  <MessageBox />
 
                   <div className="mt-auto px-5 py-3">
                     <Input

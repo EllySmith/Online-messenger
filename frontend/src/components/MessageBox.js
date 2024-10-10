@@ -23,7 +23,7 @@ const MessageBox = () => {
     if (listRef) {
       listRef.scrollTop = listRef.scrollHeight;
     }
-  }, [filteredMessages]);
+  }, [filteredMessages, messageBoxRef]);
 
   return (
     <div

@@ -43,7 +43,7 @@ const Input = ({ currentChannelId }) => {
     if (!modalVisible) {
       messageInputRef.current.focus();
     }
-  }, [modalVisible]);
+  }, [modalVisible, messageInputRef]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {

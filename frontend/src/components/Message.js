@@ -6,7 +6,8 @@ const Message = ({ messageId, username, body }) => (
       <p>
         <b>
           {username}
-          :{' '}
+          :
+          {' '}
         </b>
         <span>
           {body}
