@@ -80,7 +80,7 @@ const App = () => {
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
         <BrowserRouter>
-        <Header />
+          <Header />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<ErrorPage />} />
