@@ -12,8 +12,7 @@ const ChannelList = () => {
   }, [dispatch]);
 
   return (
-    <div className="channel-list overflow-auto h-100">
-      <ul className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
+    <ul className="h-100 d-block flex-column nav nav-pills nav-fill px-2 mb-3 overflow-auto">
         {channels.map((channel) => (
           <ChannelButton
             key={channel.id}
@@ -23,7 +22,6 @@ const ChannelList = () => {
           />
         ))}
       </ul>
-    </div>
   );
 };
 

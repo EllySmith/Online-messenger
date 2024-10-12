@@ -18,6 +18,7 @@ import LoginPage from './pages/LoginPage';
 import ChatPage from './pages/ChatPage';
 import RegistrationPage from './pages/RegistrationPage';
 import { ru, eng, it } from './utils/locales';
+import Header from './components/Header';
 
 let socket;
 
@@ -79,6 +80,7 @@ const App = () => {
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
         <BrowserRouter>
+        <Header />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<ErrorPage />} />

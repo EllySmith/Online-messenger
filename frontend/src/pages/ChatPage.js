@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Spinner from 'react-bootstrap/Spinner';
 import ChannelList from '../components/ChannelList';
 import Input from '../components/ChatInput';
-import Header from '../components/Header';
 import '../App.css';
 import Modal from '../components/modals/Modal';
 import { fetchChannels, changeCurrentChannel } from '../store/channelsSlice';
@@ -57,14 +56,13 @@ const ChatPage = () => {
       ) : (
         <div className="h-100" id="chat">
           <div className="d-flex flex-column h-100">
-            <Header className="mb-4" />
 
             <div
               className="container h-100 my-4 overflow-hidden rounded shadow"
               id="chat-container"
             >
               <div className="row h-100 bg-white flex-md-row">
-                <div className="col-4 col-md-2 border-end px-0 bg-light flex-column d-flex">
+              <div className="h-100 d-flex flex-column col-2 col-md-2 border-end px-1 bg-light">
                   <ChannelListHeader
                     currentChannelId={currentChannelId}
                     setCurrentChannel={changeCurrentChannel}
