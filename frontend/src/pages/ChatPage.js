@@ -63,14 +63,14 @@ const ChatPage = () => {
             >
               <div className="row h-100 bg-white flex-md-row">
                 <div className="h-100 d-flex flex-column col-2 col-md-2 border-end px-1 bg-light">
-                <ChannelListHeader
-                    currentChannelId={currentChannelId}
-                    setCurrentChannel={changeCurrentChannel}
-                />
-                <ChannelList
-                    currentChannelId={currentChannelId}
-                    onClick={(id) => dispatch(changeCurrentChannel(id))}
-                />
+                  <ChannelListHeader
+                  currentChannelId={currentChannelId}
+                  setCurrentChannel={changeCurrentChannel}
+                  />
+                  <ChannelList
+                  currentChannelId={currentChannelId}
+                  onClick={(id) => dispatch(changeCurrentChannel(id))}
+                  />
                 </div>
 
                 <div className="col p-0 d-flex flex-column h-100">
