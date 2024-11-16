@@ -12,10 +12,6 @@ Real-time messaging using Socket.io
 - Possibility to add, rename and delete channels
 - Responsive design with mobile support
 
-# Demonstration
-
-https://frontend-project-12-bk7a.vercel.app/
-
 1. [Installation](#installation)
 2. [Usage](#usage)
 4. [Technologies](#technologies)
