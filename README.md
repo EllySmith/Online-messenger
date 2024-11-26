@@ -2,6 +2,9 @@
 [![Actions Status](https://github.com/EllySmith/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/EllySmith/frontend-project-12/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b3aa72f28fafedec7e77/maintainability)](https://codeclimate.com/github/EllySmith/frontend-project-12/maintainability)
 
+![The app](frontend/readmefiles/3.png)
+
+
 # Online Messanger
 
 A real-time messaging application built with [React](https://reactjs.org/), [Node.js](https://nodejs.org/), and [Socket.io](https://socket.io/).
@@ -53,5 +56,6 @@ The application will be available at `http://localhost:3000/`.
 - leoProfanity (profanity filter)
 
 
-
+![Registration](frontend/readmefiles/2.png)
+![Messaging](frontend/readmefiles/1.png)
 
