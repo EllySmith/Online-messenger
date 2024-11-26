@@ -5,7 +5,7 @@
 ![The app](frontend/readmefiles/3.png)
 
 
-# Online Messanger
+# Online Messenger
 
 A real-time messaging application built with [React](https://reactjs.org/), [Node.js](https://nodejs.org/), and [Socket.io](https://socket.io/).
 
